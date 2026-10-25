@@ -17,6 +17,9 @@ import { imageSrc } from "@/lib/image";
 //   NEXT_PUBLIC_BTC_ADDRESS=bc1...             (your RECEIVING address only)
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
 const BTC_ADDRESS = process.env.NEXT_PUBLIC_BTC_ADDRESS ?? "";
+/* const CASHAPP_TAG = process.env.NEXT_PUBLIC_CASHAPP_TAG ?? "";
+const APPLE_PAY_INFO = process.env.NEXT_PUBLIC_APPLE_PAY_INFO ?? "";
+const ZELLE_INFO = process.env.NEXT_PUBLIC_ZELLE_INFO ?? ""; */
 
 // Shipping: a flat fee, discounted when the cart subtotal is above the threshold.
 const SHIPPING_FEE = Number(process.env.NEXT_PUBLIC_SHIPPING_FEE ?? 0);
@@ -35,7 +38,7 @@ const STUB_H = 156;
 
 const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME ?? "nofacetrap";
 
-type Method = "whatsapp" | "bitcoin";
+type Method = "whatsapp" | "bitcoin" | "cashapp" | "applepay" | "zelle";
 
 /* ------------------------------------------------------------------ */
 /* Helpers                                                             */
@@ -92,6 +95,8 @@ export default function CartPage() {
 
   const [method, setMethod] = useState<Method>("whatsapp");
   const [showBtc, setShowBtc] = useState(false);
+  const [showAltPay, setShowAltPay] = useState(false);
+  const altPayRef = useRef<HTMLDivElement | null>(null);
   const [rate, setRate] = useState<number | null>(null);
   const [rateState, setRateState] = useState<"idle" | "loading" | "error">("idle");
   const [copied, setCopied] = useState<"address" | "amount" | "receipt" | null>(null);
@@ -196,6 +201,8 @@ export default function CartPage() {
   const proceedFromReceipt = () => {
     setReceiptOpen(false);
     if (method === "whatsapp") {
+      setShowBtc(false);
+      setShowAltPay(false);
       window.open(
         whatsappUrl("Please send me the payment details."),
         "_blank",
@@ -203,11 +210,17 @@ export default function CartPage() {
       );
       return;
     }
-    setShowBtc(true);
-    setTimeout(
-      () => btcRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
-      80,
-    );
+    if (method === "bitcoin") {
+      setShowAltPay(false);
+      setShowBtc(true);
+      setTimeout(
+        () => btcRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+        80,
+      );
+      return;
+    }
+    setShowBtc(false);
+    setShowAltPay(false);
   };
 
   const copy = async (text: string, what: "address" | "amount" | "receipt") => {
@@ -237,9 +250,43 @@ export default function CartPage() {
   };
 
   const configMissing =
-    method === "whatsapp" ? !WHATSAPP_NUMBER : !BTC_ADDRESS;
+    method === "whatsapp"
+      ? !WHATSAPP_NUMBER
+      : method === "bitcoin"
+      ? !BTC_ADDRESS
+      : /* method === "cashapp"
+      ? !CASHAPP_TAG
+      : method === "applepay"
+      ? !APPLE_PAY_INFO
+      : method === "zelle"
+      ? !ZELLE_INFO
+      : */ false;
 
-  const methodName = method === "whatsapp" ? "WhatsApp" : "Bitcoin";
+  const methodName =
+    method === "whatsapp"
+      ? "WhatsApp"
+      : method === "bitcoin"
+      ? "Bitcoin"
+      /* : method === "cashapp"
+      ? "Cash App"
+      : method === "applepay"
+      ? "Apple Pay"
+      : method === "zelle"
+      ? "Zelle" */
+      : "Payment";
+
+  const paymentLabel =
+    method === "whatsapp"
+      ? "WhatsApp order"
+      : method === "bitcoin"
+      ? "Bitcoin"
+      /* : method === "cashapp"
+      ? "Cash App"
+      : method === "applepay"
+      ? "Apple Pay"
+      : method === "zelle"
+      ? "Zelle" */
+      : "Payment";
 
   // Plain-text version of the receipt for the copy button
   const receiptText = () =>
@@ -247,7 +294,7 @@ export default function CartPage() {
       `${COMPANY_NAME} - Order receipt`,
       `Reference: ${orderRef}`,
       `Date: ${receiptDate}`,
-      `Payment: ${method === "whatsapp" ? "WhatsApp order" : "Bitcoin"}`,
+      `Payment: ${paymentLabel}`,
       "",
       ...lines.map(({ item, unit, total }) => {
         const each = unit !== null ? ` @ ${fmt(unit)}` : "";
@@ -435,6 +482,24 @@ export default function CartPage() {
                         hint: "( live rate )",
                         note: "Pay from any wallet, then confirm on WhatsApp",
                       },
+                      /* {
+                        id: "cashapp" as const,
+                        title: "Cash App",
+                        hint: "",
+                        note: "Pay via Cash App, then confirm on WhatsApp",
+                      },
+                      {
+                        id: "applepay" as const,
+                        title: "Apple Pay",
+                        hint: "",
+                        note: "Pay via Apple Pay, then confirm on WhatsApp",
+                      },
+                      {
+                        id: "zelle" as const,
+                        title: "Zelle",
+                        hint: "",
+                        note: "Pay via Zelle, then confirm on WhatsApp",
+                      }, */
                     ]
                   ).map((opt) => (
                     <label key={opt.id} className="flex cursor-pointer items-start gap-3.5">
@@ -443,10 +508,11 @@ export default function CartPage() {
                         name="checkout-method"
                         value={opt.id}
                         checked={method === opt.id}
-                        onChange={() => {
-                          setMethod(opt.id);
-                          if (opt.id === "whatsapp") setShowBtc(false);
-                        }}
+                    onChange={() => {
+                      setMethod(opt.id);
+                      setShowBtc(false);
+                      setShowAltPay(false);
+                    }}
                         className="peer sr-only"
                       />
                       <span className="mt-px grid h-[22px] w-[22px] shrink-0 place-items-center rounded-full border border-[#c3c9d0] bg-white text-white transition-colors duration-150 peer-checked:border-[var(--checkout-accent)] peer-checked:bg-[var(--checkout-accent)] peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--color-accent)] [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100">
@@ -522,122 +588,15 @@ export default function CartPage() {
                   <p className="mt-2 text-xs text-[var(--color-text-muted)]">
                     {method === "whatsapp"
                       ? "Add NEXT_PUBLIC_WHATSAPP_NUMBER to .env.local to enable this."
-                      : "Add NEXT_PUBLIC_BTC_ADDRESS to .env.local to enable this."}
+                      : method === "bitcoin"
+                      ? "Add NEXT_PUBLIC_BTC_ADDRESS to .env.local to enable this."
+                      : "Add the required env var to .env.local to enable this."}
                   </p>
                 ) : null}
               </div>
             </div>
 
-            {/* Bitcoin payment details */}
-            {method === "bitcoin" && showBtc ? (
-              <div
-                ref={btcRef}
-                className="mt-6 scroll-mt-40 rounded-[var(--radius-16)] border border-[var(--color-border)] p-5 sm:p-8"
-              >
-                <h2 className="font-display text-[20px] font-extrabold text-[var(--color-text-primary)]">
-                  Bitcoin payment
-                </h2>
-                {orderRef ? (
-                  <p className="mt-1 text-xs text-[var(--color-text-muted)]">
-                    Order ref {orderRef}
-                  </p>
-                ) : null}
-
-                {total === null ? (
-                  <p className="mt-3 text-sm text-[var(--color-text-muted)]">
-                    We couldn&rsquo;t work out the cart total, so the Bitcoin amount can&rsquo;t be calculated.
-                  </p>
-                ) : !rate && rateState !== "error" ? (
-                  <p className="mt-3 text-sm text-[var(--color-text-muted)]">Fetching the live rate…</p>
-                ) : rateState === "error" && !rate ? (
-                  <div className="mt-3 text-sm text-[var(--color-text-muted)]">
-                    Couldn&rsquo;t fetch the Bitcoin rate.{" "}
-                    <button
-                      type="button"
-                      onClick={() => void loadRate()}
-                      className="font-semibold text-[var(--color-text-primary)] underline underline-offset-4"
-                    >
-                      Try again
-                    </button>
-                  </div>
-                ) : (
-                  <div className="mt-4 grid gap-5 md:grid-cols-2">
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--color-gray-dark)]">
-                        Send exactly
-                      </p>
-                      <p className="mt-1 flex flex-wrap items-center gap-3">
-                        <span className="text-[22px] font-extrabold tabular-nums text-[var(--color-text-primary)]">
-                          {btcAmount} BTC
-                        </span>
-                        <button
-                          type="button"
-                          onClick={() => btcAmount && copy(btcAmount, "amount")}
-                          className="text-[13px] font-semibold text-[var(--color-text-muted)] underline underline-offset-4 hover:text-[var(--color-text-primary)]"
-                        >
-                          {copied === "amount" ? "Copied" : "Copy amount"}
-                        </button>
-                      </p>
-                      <p className="mt-1 text-xs text-[var(--color-text-muted)]">
-                        &asymp; {total !== null ? fmt(total) : ""} at 1 BTC = {rate ? fmt(rate) : "…"}.{" "}
-                        <button
-                          type="button"
-                          onClick={() => void loadRate()}
-                          className="font-semibold underline underline-offset-4 hover:text-[var(--color-text-primary)]"
-                        >
-                          {rateState === "loading" ? "Refreshing…" : "Refresh rate"}
-                        </button>
-                      </p>
-                    </div>
-
-                    <div>
-                      <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--color-gray-dark)]">
-                        To this address
-                      </p>
-                      <p className="mt-1 break-all rounded-[var(--radius-8)] bg-[var(--color-bg-surface)] px-3 py-2 font-mono text-[13px] text-[var(--color-text-primary)]">
-                        {BTC_ADDRESS}
-                      </p>
-                      <div className="mt-2 flex flex-wrap gap-4 text-[13px] font-semibold">
-                        <button
-                          type="button"
-                          onClick={() => copy(BTC_ADDRESS, "address")}
-                          className="text-[var(--color-text-muted)] underline underline-offset-4 hover:text-[var(--color-text-primary)]"
-                        >
-                          {copied === "address" ? "Copied" : "Copy address"}
-                        </button>
-                        <a
-                          href={`bitcoin:${BTC_ADDRESS}?amount=${btcAmount}`}
-                          className="text-[var(--color-text-muted)] underline underline-offset-4 hover:text-[var(--color-text-primary)]"
-                        >
-                          Open in wallet
-                        </a>
-                      </div>
-                    </div>
-                  </div>
-                )}
-
-                <div className="mt-6 border-t border-[var(--color-border)] pt-5">
-                  <p className="text-sm text-[var(--color-text-muted)]">
-                    Once you&rsquo;ve sent the payment, send us your order and the transaction ID so we can confirm it.
-                  </p>
-                  <a
-                    href={whatsappUrl(
-                      btcAmount
-                        ? `I paid ${btcAmount} BTC to ${BTC_ADDRESS}.\nTransaction ID: `
-                        : "I paid with Bitcoin.\nTransaction ID: ",
-                    )}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className={`mt-3 inline-flex items-center gap-2 rounded-[var(--radius-8)] bg-black px-5 py-2.5 text-[15px] font-semibold text-white transition-colors duration-[var(--duration-moderate)] hover:bg-[#111f2a] ${
-                      !WHATSAPP_NUMBER ? "pointer-events-none opacity-50" : ""
-                    }`}
-                  >
-                    <ChatIcon />
-                    I&rsquo;ve paid &mdash; send details on WhatsApp
-                  </a>
-                </div>
-              </div>
-            ) : null}
+            {/* Alternative payment details (disabled for this copy) */}
 
             {/* Receipt */}
             <style>{`
@@ -695,8 +654,8 @@ export default function CartPage() {
                         <dd className="mt-0.5 font-semibold leading-snug">{receiptDate}</dd>
                       </div>
                       <div>
-                        <dt className="text-[12px] text-[var(--color-text-muted)]">Payment</dt>
-                        <dd className="mt-0.5 font-semibold">{methodName}</dd>
+                    <dt className="text-[12px] text-[var(--color-text-muted)]">Payment</dt>
+                    <dd className="mt-0.5 font-semibold">{paymentLabel}</dd>
                       </div>
                     </dl>
 
