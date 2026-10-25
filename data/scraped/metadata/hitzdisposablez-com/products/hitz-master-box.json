@@ -1,0 +1,54 @@
+{
+  "slug": "hitz-master-box",
+  "name": "Hitz Master Box",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 1200,
+  "price_max": 1200,
+  "currency": "USD",
+  "price_range": "$1200.00",
+  "available": true,
+  "sku": "HD_66496",
+  "tags": [],
+  "description": "Check out out other brands  Dabwoods , Sherbinskis",
+  "description_html": "<p><span style=\"color: #000000\">Check out out other brands <span class=\"s1\"> <span class=\"s2\">Dabwoods</span> , <span class=\"s2\">Sherbinskis</span></span></span></p>",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/image-7.jpg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-master-box__000.jpg"
+    }
+  ],
+  "variants": [
+    {
+      "id": 325,
+      "title": "Variant 1",
+      "price": 1200,
+      "available": true
+    },
+    {
+      "id": 326,
+      "title": "Variant 2",
+      "price": 1200,
+      "available": true
+    },
+    {
+      "id": 327,
+      "title": "Variant 3",
+      "price": 1200,
+      "available": true
+    },
+    {
+      "id": 328,
+      "title": "Variant 4",
+      "price": 1200,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-master-box/",
+  "scraped_at": "2026-10-24T12:10:41.677Z"
+}

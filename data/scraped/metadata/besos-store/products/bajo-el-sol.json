@@ -1,0 +1,38 @@
+{
+  "slug": "bajo-el-sol",
+  "name": "Bajo el sol",
+  "site": "besos-store",
+  "category": "all",
+  "price_min": 30,
+  "price_max": 35,
+  "currency": "USD",
+  "price_range": "$30.00 – $35.00",
+  "available": true,
+  "tags": [],
+  "description": "Bajo el Sol Besos Disposable – Disposable Vape\n\nBajo el Sol Besos disposable is the perfect vape for anyone looking for a fresh, sweet flavor in every puff. It blends summery fruit notes with a smooth, enveloping finish, making it ideal for any time of day.\n\nA Flavor You&#8217;ll Love\n\nThis disposable delivers a burst of flavor from the very first puff. Plus, its balanced blend avoids the harshness common in other disposables. As a result, it&#8217;s become a popular choice among users looking for something different.\n\nPractical, Portable Design\n\nThe device is compact and lightweight. So, it fits easily in your pocket or bag. It also requires no charging or refills, because it comes ready to use right out of the box.\n\nKey Features\n\n• Flavor: Bajo el Sol Besos (fruity and sweet)\n\n• Format: disposable, no refills needed\n\n• Easy to use: no buttons or settings\n\n• Great for beginners and experienced users alike\n\nWhy Choose This Disposable?\n\nIn short, it combines flavor, convenience, and simplicity in one product. If you&#8217;re looking for an easy, tasty experience, this is your best option.",
+  "description_html": "<h3 class=\"mt-3 -mb-1 text-[1.125rem] font-bold\" dir=\"ltr\">Bajo el Sol Besos Disposable – Disposable Vape</h3>\n<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\"><strong>Bajo el Sol Besos disposable</strong> is the perfect vape for anyone looking for a fresh, sweet flavor in every puff. It blends summery fruit notes with a smooth, enveloping finish, making it ideal for any time of day.</p>\n<h4 class=\"mt-2 -mb-1 text-base font-bold\" dir=\"ltr\"><a href=\"https://besos.store/product/besos-blue-strips-2g/\">A Flavor You&#8217;ll Love</a></h4>\n<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">This disposable delivers a burst of flavor from the very first puff. Plus, its balanced blend avoids the harshness common in other disposables. As a result, it&#8217;s become a popular choice among users looking for something different.</p>\n<h4 class=\"mt-2 -mb-1 text-base font-bold\" dir=\"ltr\">Practical, Portable Design</h4>\n<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">The device is compact and lightweight. So, it fits easily in your pocket or bag. It also requires no charging or refills, because it comes ready to use right out of the box.</p>\n<h4 class=\"mt-2 -mb-1 text-base font-bold\" dir=\"ltr\">Key Features</h4>\n<ul class=\"[li_&amp;]:mb-0 [li_&amp;]:mt-1 [li_&amp;]:gap-1 [&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc flex flex-col gap-1 pl-8 mb-3 print:block print:space-y-1\" dir=\"ltr\">\n<li class=\"font-claude-response-body whitespace-normal break-words pl-2\">Flavor: Bajo el Sol Besos (fruity and sweet)</li>\n<li class=\"font-claude-response-body whitespace-normal break-words pl-2\">Format: disposable, no refills needed</li>\n<li class=\"font-claude-response-body whitespace-normal break-words pl-2\">Easy to use: no buttons or settings</li>\n<li class=\"font-claude-response-body whitespace-normal break-words pl-2\">Great for beginners and experienced users alike</li>\n</ul>\n<h4 class=\"mt-2 -mb-1 text-base font-bold\" dir=\"ltr\">Why Choose This Disposable?</h4>\n<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">In short, <strong>it </strong>combines flavor, convenience, and simplicity in one product. If you&#8217;re looking for an easy, tasty experience, this is your best option.</p>",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/08/Bajo-el-sol.jpeg",
+      "alt": "Bajo el sol",
+      "local": "data\\scraped\\images\\besos-store__bajo-el-sol__000.jpeg"
+    },
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/08/bajo-el-sol-3.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\besos-store__bajo-el-sol__001.jpeg"
+    },
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/08/bajo-el-sol2.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\besos-store__bajo-el-sol__002.jpeg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://besos.store/product/bajo-el-sol/",
+  "scraped_at": "2026-10-24T12:08:30.413Z"
+}

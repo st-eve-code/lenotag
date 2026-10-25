@@ -1,0 +1,33 @@
+{
+  "slug": "hitz-players-club-edition-bulk-10pcs",
+  "name": "Hitz Players Club Edition Bulk- 10pcs",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 180,
+  "price_max": 180,
+  "currency": "USD",
+  "price_range": "$180.00",
+  "available": true,
+  "tags": [],
+  "description": "• \n\n•",
+  "description_html": "<ul>\n<li style=\"list-style-type: none\">\n<ul>\n<li></li>\n</ul>\n</li>\n</ul>",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/08/b2bd13b9-2eb6-46a7-bcc8-338fbaf5ea2c-3.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-players-club-edition-bulk-10pcs__000.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/08/3b61b433-c258-4cc3-832e-0942992f3d47-1.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-players-club-edition-bulk-10pcs__001.jpeg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-players-club-edition-bulk-10pcs/",
+  "scraped_at": "2026-10-24T12:10:41.672Z"
+}

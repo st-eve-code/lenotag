@@ -1,0 +1,265 @@
+{
+  "slug": "besitos-cannabis-prerolls",
+  "name": "Besitos Prerolls Bulksale",
+  "site": "besos-store",
+  "category": "all",
+  "price_min": 125,
+  "price_max": 125,
+  "currency": "USD",
+  "price_range": "$125.00",
+  "available": true,
+  "tags": [],
+  "description": "Besitos Prerolls – Premium Ready-to-Smoke Cannabis Joints\n\nBesitos  Prerolls are high-quality, ready-to-smoke cannabis joints designed for smooth, consistent performance and rich flavor in every session. Each preroll is carefully crafted and evenly packed to ensure a clean burn and reliable experience from start to finish.\n\nAvailable in a variety of popular strains and signature flavors, they offer a convenient option for users who want premium cannabis without the hassle of rolling. Perfect for both beginners and experienced consumers, they deliver balanced effects, bold taste, and dependable quality.\n\nWhether for relaxation, social sessions, or on-the-go use, Besos Prerolls provide a flavorful and easy cannabis experience you can trust.",
+  "description_html": "<div class=\"flex max-w-full flex-col gap-4 grow\">\n<div class=\"min-h-8 text-message relative flex w-full flex-col items-end gap-2 text-start break-words whitespace-normal outline-none keyboard-focused:focus-ring [.text-message+&amp;]:mt-1\" dir=\"auto\" data-message-author-role=\"assistant\" data-message-id=\"269ea441-130e-4f9c-ac81-f7468251bf39\" data-message-model-slug=\"gpt-5-3-mini\" data-turn-start-message=\"true\">\n<div class=\"flex w-full flex-col gap-1 empty:hidden\">\n<div class=\"markdown prose dark:prose-invert w-full wrap-break-word dark markdown-new-styling\">\n<p data-start=\"0\" data-end=\"59\"><strong data-start=\"0\" data-end=\"59\">Besitos Prerolls – Premium Ready-to-Smoke Cannabis Joints</strong></p>\n<p data-start=\"61\" data-end=\"323\">Besitos  Prerolls are high-quality, ready-to-smoke cannabis joints designed for smooth, consistent performance and rich flavor in every session. Each preroll is carefully crafted and evenly packed to ensure a clean burn and reliable experience from start to finish.</p>\n<p data-start=\"325\" data-end=\"618\">Available in a variety of popular strains and signature flavors, they offer a convenient option for users who want premium cannabis without the hassle of rolling. Perfect for both beginners and experienced consumers, they deliver balanced effects, bold taste, and dependable quality.</p>\n<p data-start=\"620\" data-end=\"757\" data-is-last-node=\"\" data-is-only-node=\"\">Whether for relaxation, social sessions, or on-the-go use, Besos Prerolls provide a flavorful and easy cannabis experience you can trust.</p>\n</div>\n</div>\n</div>\n</div>\n<div class=\"z-0 flex min-h-[46px] justify-start\"></div>",
+  "short_description": "Besos Prerolls are premium, ready-to-smoke cannabis joints crafted for smooth, consistent burns and rich flavor. Designed for convenience, they deliver a reliable and enjoyable experience in every pack.\n\nAvailable Flavors\n\n• Coffin Kisses\n\n• Duece X 11\n\n• Frozen Grapes\n\n• Mango Fuego\n\n• Horchata\n\n• Motita Cherry",
+  "images": [
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/04/Screen-Shot-2024-11-08-at-9.55.05-AM-300x300-1.png",
+      "alt": "besitos prerolls",
+      "local": "data\\scraped\\images\\besos-store__besitos-cannabis-prerolls__000.png"
+    },
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/04/bp5.jpg",
+      "alt": "besitos bulk prerolls3",
+      "local": "data\\scraped\\images\\besos-store__besitos-cannabis-prerolls__001.jpg"
+    },
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/04/bp4.jpg",
+      "alt": "besitos bulk prerolls4",
+      "local": "data\\scraped\\images\\besos-store__besitos-cannabis-prerolls__002.jpg"
+    },
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/04/bp3.jpg",
+      "alt": "besitos bulk prerolls1",
+      "local": "data\\scraped\\images\\besos-store__besitos-cannabis-prerolls__003.jpg"
+    },
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/04/bp2.jpg",
+      "alt": "besitos bulk prerolls5",
+      "local": "data\\scraped\\images\\besos-store__besitos-cannabis-prerolls__004.jpg"
+    }
+  ],
+  "variants": [
+    {
+      "id": 394,
+      "title": "Variant 1",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 395,
+      "title": "Variant 2",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 396,
+      "title": "Variant 3",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 397,
+      "title": "Variant 4",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 398,
+      "title": "Variant 5",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 399,
+      "title": "Variant 6",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 400,
+      "title": "Variant 7",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 401,
+      "title": "Variant 8",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 402,
+      "title": "Variant 9",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 403,
+      "title": "Variant 10",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 404,
+      "title": "Variant 11",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 405,
+      "title": "Variant 12",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 406,
+      "title": "Variant 13",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 407,
+      "title": "Variant 14",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 408,
+      "title": "Variant 15",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 409,
+      "title": "Variant 16",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 410,
+      "title": "Variant 17",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 411,
+      "title": "Variant 18",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 412,
+      "title": "Variant 19",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 413,
+      "title": "Variant 20",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 414,
+      "title": "Variant 21",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 415,
+      "title": "Variant 22",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 416,
+      "title": "Variant 23",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 417,
+      "title": "Variant 24",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 418,
+      "title": "Variant 25",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 419,
+      "title": "Variant 26",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 420,
+      "title": "Variant 27",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 421,
+      "title": "Variant 28",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 422,
+      "title": "Variant 29",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 423,
+      "title": "Variant 30",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 424,
+      "title": "Variant 31",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 425,
+      "title": "Variant 32",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 426,
+      "title": "Variant 33",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 427,
+      "title": "Variant 34",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 428,
+      "title": "Variant 35",
+      "price": 125,
+      "available": true
+    },
+    {
+      "id": 429,
+      "title": "Variant 36",
+      "price": 125,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://besos.store/product/besitos-cannabis-prerolls/",
+  "scraped_at": "2026-10-24T12:08:30.415Z"
+}

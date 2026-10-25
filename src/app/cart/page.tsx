@@ -18,6 +18,15 @@ import { imageSrc } from "@/lib/image";
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
 const BTC_ADDRESS = process.env.NEXT_PUBLIC_BTC_ADDRESS ?? "";
 
+// Shipping: a flat fee, discounted when the cart subtotal is above the threshold.
+const SHIPPING_FEE = Number(process.env.NEXT_PUBLIC_SHIPPING_FEE ?? 0);
+const SHIPPING_DISCOUNT_PERCENT = Number(
+  process.env.NEXT_PUBLIC_SHIPPING_DISCOUNT_PERCENT ?? 25,
+);
+const SHIPPING_DISCOUNT_THRESHOLD = Number(
+  process.env.NEXT_PUBLIC_SHIPPING_DISCOUNT_THRESHOLD ?? 1000,
+);
+
 // Accent for the checkout method check circles (buttons are black, like the rest of the site).
 const CHECKOUT_ACCENT = "#000000";
 
@@ -110,8 +119,17 @@ export default function CartPage() {
   const complete = lines.every((l) => l.total !== null);
   const subtotal = complete ? lines.reduce((s, l) => s + (l.total ?? 0), 0) : null;
 
+  // Shipping discount: applies when the cart subtotal is above the threshold.
+  const shippingDiscountApplies =
+    subtotal !== null && subtotal > SHIPPING_DISCOUNT_THRESHOLD;
+  const shippingDiscount = shippingDiscountApplies
+    ? (SHIPPING_FEE * SHIPPING_DISCOUNT_PERCENT) / 100
+    : 0;
+  const shipping = SHIPPING_FEE - shippingDiscount;
+  const total = subtotal !== null ? subtotal + shipping : null;
+
   const btcAmount =
-    subtotal !== null && rate ? (subtotal / rate).toFixed(8) : null;
+    total !== null && rate ? (total / rate).toFixed(8) : null;
 
   const loadRate = useCallback(async () => {
     setRateState("loading");
@@ -150,7 +168,11 @@ export default function CartPage() {
       "",
       ...rows,
       "",
-      subtotal !== null ? `Total: ${fmt(subtotal)}` : "",
+      subtotal !== null ? `Subtotal: ${fmt(subtotal)}` : "",
+      subtotal !== null
+        ? `Shipping${shippingDiscountApplies ? ` (${SHIPPING_DISCOUNT_PERCENT}% discount)` : ""}: ${fmt(shipping)}`
+        : "",
+      total !== null ? `Total: ${fmt(total)}` : "",
       extra ?? "",
     ]
       .filter((l, i, arr) => !(l === "" && arr[i - 1] === ""))
@@ -234,8 +256,8 @@ export default function CartPage() {
       }),
       "",
       `Subtotal (${count} ${count === 1 ? "item" : "items"}): ${subtotal !== null ? fmt(subtotal) : "-"}`,
-      "Shipping: Confirmed on order",
-      `Total: ${subtotal !== null ? fmt(subtotal) : "-"}`,
+      `Shipping${shippingDiscountApplies ? ` (${SHIPPING_DISCOUNT_PERCENT}% discount)` : ""}: ${fmt(shipping)}`,
+      `Total: ${total !== null ? fmt(total) : "-"}`,
     ].join("\n");
 
   return (
@@ -457,15 +479,31 @@ export default function CartPage() {
                   <div className="flex items-center justify-between border-b border-[#d6dbe1] py-3">
                     <dt className="text-[11px] uppercase tracking-[0.03em] text-[var(--color-text-muted)]">
                       Shipping
+                      {shippingDiscountApplies ? (
+                        <span className="ml-1.5 normal-case tracking-normal text-[#15803d]">
+                          ({SHIPPING_DISCOUNT_PERCENT}% discount)
+                        </span>
+                      ) : null}
                     </dt>
-                    <dd className="font-medium text-[var(--color-text-primary)]">Confirmed on order</dd>
+                    <dd className="font-medium tabular-nums text-[var(--color-text-primary)]">
+                      {shippingDiscountApplies ? (
+                        <span className="flex items-center gap-1.5">
+                          <span className="text-[var(--color-text-muted)] line-through">
+                            {fmt(SHIPPING_FEE)}
+                          </span>
+                          <span>{fmt(shipping)}</span>
+                        </span>
+                      ) : (
+                        fmt(shipping)
+                      )}
+                    </dd>
                   </div>
                   <div className="flex items-center justify-between py-3">
                     <dt className="text-[11px] uppercase tracking-[0.03em] text-[var(--color-text-muted)]">
                       Total
                     </dt>
                     <dd className="font-medium tabular-nums text-[var(--color-text-primary)]">
-                      {subtotal !== null ? fmt(subtotal) : "—"}
+                      {total !== null ? fmt(total) : "—"}
                     </dd>
                   </div>
                 </dl>
@@ -477,7 +515,7 @@ export default function CartPage() {
                   className="mt-3 flex h-12 w-full items-center justify-between gap-3 rounded-[8px] bg-black px-4 text-[14px] font-bold text-white transition-colors duration-[var(--duration-moderate)] hover:bg-[#111f2a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <span>Proceed to checkout</span>
-                  <span className="tabular-nums">{subtotal !== null ? fmt(subtotal) : ""}</span>
+                  <span className="tabular-nums">{total !== null ? fmt(total) : ""}</span>
                 </button>
 
                 {configMissing ? (
@@ -505,7 +543,7 @@ export default function CartPage() {
                   </p>
                 ) : null}
 
-                {subtotal === null ? (
+                {total === null ? (
                   <p className="mt-3 text-sm text-[var(--color-text-muted)]">
                     We couldn&rsquo;t work out the cart total, so the Bitcoin amount can&rsquo;t be calculated.
                   </p>
@@ -541,7 +579,7 @@ export default function CartPage() {
                         </button>
                       </p>
                       <p className="mt-1 text-xs text-[var(--color-text-muted)]">
-                        &asymp; {subtotal !== null ? fmt(subtotal) : ""} at 1 BTC = {rate ? fmt(rate) : "…"}.{" "}
+                        &asymp; {total !== null ? fmt(total) : ""} at 1 BTC = {rate ? fmt(rate) : "…"}.{" "}
                         <button
                           type="button"
                           onClick={() => void loadRate()}
@@ -686,13 +724,31 @@ export default function CartPage() {
                         <dd className="tabular-nums">{subtotal !== null ? fmt(subtotal) : "—"}</dd>
                       </div>
                       <div className="flex justify-between gap-4">
-                        <dt className="text-[var(--color-text-muted)]">Shipping</dt>
-                        <dd>Confirmed on order</dd>
+                        <dt className="text-[var(--color-text-muted)]">
+                          Shipping
+                          {shippingDiscountApplies ? (
+                            <span className="ml-1 text-[#15803d]">
+                              ({SHIPPING_DISCOUNT_PERCENT}% discount)
+                            </span>
+                          ) : null}
+                        </dt>
+                        <dd className="tabular-nums">
+                          {shippingDiscountApplies ? (
+                            <span className="flex items-center gap-1.5">
+                              <span className="text-[var(--color-text-muted)] line-through">
+                                {fmt(SHIPPING_FEE)}
+                              </span>
+                              <span>{fmt(shipping)}</span>
+                            </span>
+                          ) : (
+                            fmt(shipping)
+                          )}
+                        </dd>
                       </div>
                       <div className="flex items-baseline justify-between gap-4 pt-3">
                         <dt className="text-[15px] font-semibold">Total</dt>
                         <dd className="font-display text-[32px] font-extrabold leading-none tabular-nums">
-                          {subtotal !== null ? fmt(subtotal) : "—"}
+                          {total !== null ? fmt(total) : "—"}
                         </dd>
                       </div>
                     </dl>

@@ -1,0 +1,60 @@
+{
+  "slug": "hitz-gen-7-bulk",
+  "name": "Hitz Gen 7 Bulk",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 200,
+  "price_max": 200,
+  "currency": "USD",
+  "price_range": "$200.00",
+  "available": true,
+  "sku": "HD_36177",
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "To order specific strains, kindly add name of strains and quantity you desire in the note section at check out",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/IMG_1555.jpg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-gen-7-bulk__000.jpg"
+    }
+  ],
+  "variants": [
+    {
+      "id": 199,
+      "title": "Variant 1",
+      "price": 200,
+      "available": true
+    },
+    {
+      "id": 200,
+      "title": "Variant 2",
+      "price": 200,
+      "available": true
+    },
+    {
+      "id": 201,
+      "title": "Variant 3",
+      "price": 200,
+      "available": true
+    },
+    {
+      "id": 202,
+      "title": "Variant 4",
+      "price": 200,
+      "available": true
+    },
+    {
+      "id": 203,
+      "title": "Variant 5",
+      "price": 200,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-gen-7-bulk/",
+  "scraped_at": "2026-10-24T12:10:41.684Z"
+}

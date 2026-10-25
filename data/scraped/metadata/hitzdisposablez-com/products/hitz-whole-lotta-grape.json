@@ -1,0 +1,42 @@
+{
+  "slug": "hitz-whole-lotta-grape",
+  "name": "Hitz Whole Lotta Grape",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 15,
+  "price_max": 15,
+  "currency": "USD",
+  "price_range": "$15.00",
+  "available": true,
+  "sku": "HD_34469",
+  "tags": [
+    "hitz 2g disposable",
+    "hitz carts",
+    "hitz company",
+    "hitz dispos gen 6",
+    "hitz disposable 2 gram",
+    "hitz disposable gen 6",
+    "hitz disposable real or fake",
+    "hitz disposable review",
+    "HITZ GEN 6",
+    "hitz high in the zone",
+    "hitz xtra",
+    "itz hitz disposable"
+  ],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/1722467602-grape.jpg-2.webp",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-whole-lotta-grape__000.webp"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-whole-lotta-grape/",
+  "scraped_at": "2026-10-24T12:10:41.683Z"
+}

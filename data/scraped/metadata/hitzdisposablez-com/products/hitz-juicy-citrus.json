@@ -1,0 +1,34 @@
+{
+  "slug": "hitz-juicy-citrus",
+  "name": "Hitz Juicy Citrus",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 15,
+  "price_max": 15,
+  "currency": "USD",
+  "price_range": "$15.00",
+  "available": true,
+  "sku": "HD_28127",
+  "tags": [
+    "gen 7 hitz",
+    "hitz dispos",
+    "hitz disposable",
+    "hitz gen"
+  ],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/IMG_2140.jpg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-juicy-citrus__000.jpg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-juicy-citrus/",
+  "scraped_at": "2026-10-24T12:10:41.684Z"
+}

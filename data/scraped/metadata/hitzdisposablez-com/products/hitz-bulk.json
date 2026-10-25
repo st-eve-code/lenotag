@@ -1,0 +1,48 @@
+{
+  "slug": "hitz-bulk",
+  "name": "Hitz Bulk",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 250,
+  "price_max": 250,
+  "currency": "USD",
+  "price_range": "$250.00",
+  "available": true,
+  "sku": "HD_78563",
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/IMG_6895.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-bulk__000.jpeg"
+    }
+  ],
+  "variants": [
+    {
+      "id": 330,
+      "title": "Variant 1",
+      "price": 250,
+      "available": true
+    },
+    {
+      "id": 331,
+      "title": "Variant 2",
+      "price": 250,
+      "available": true
+    },
+    {
+      "id": 344,
+      "title": "Variant 3",
+      "price": 250,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-bulk/",
+  "scraped_at": "2026-10-24T12:10:41.677Z"
+}

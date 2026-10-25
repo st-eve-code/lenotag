@@ -1,0 +1,34 @@
+{
+  "slug": "hitz-blue-razz",
+  "name": "Hitz Blue Razz",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 15,
+  "price_max": 15,
+  "currency": "USD",
+  "price_range": "$15.00",
+  "available": true,
+  "sku": "HD_21717",
+  "tags": [
+    "hen 6 hitz",
+    "hitz dispo gen 6",
+    "hitz dispos gen 6",
+    "HITZ GEN 6"
+  ],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/IMG_0331.jpg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-blue-razz__000.jpg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-blue-razz/",
+  "scraped_at": "2026-10-24T12:10:41.683Z"
+}

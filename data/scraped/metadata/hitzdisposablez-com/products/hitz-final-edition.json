@@ -1,0 +1,60 @@
+{
+  "slug": "hitz-final-edition",
+  "name": "Hitz Final Edition",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 200,
+  "price_max": 200,
+  "currency": "USD",
+  "price_range": "$200.00",
+  "available": true,
+  "sku": "HD_34661",
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/image-7.jpg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-final-edition__000.jpg"
+    }
+  ],
+  "variants": [
+    {
+      "id": 189,
+      "title": "Variant 1",
+      "price": 200,
+      "available": true
+    },
+    {
+      "id": 190,
+      "title": "Variant 2",
+      "price": 200,
+      "available": true
+    },
+    {
+      "id": 191,
+      "title": "Variant 3",
+      "price": 200,
+      "available": true
+    },
+    {
+      "id": 192,
+      "title": "Variant 4",
+      "price": 200,
+      "available": true
+    },
+    {
+      "id": 193,
+      "title": "Variant 5",
+      "price": 200,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-final-edition/",
+  "scraped_at": "2026-10-24T12:10:41.684Z"
+}

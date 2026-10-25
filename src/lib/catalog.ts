@@ -233,6 +233,10 @@ export const K2_SITE = "k2spicesprayshop-com";
 export const DMT_SITE = "dmtshopping-com";
 export const SHOPPUFF_SITE = "shoppuff-com";
 export const OCHO_SITE = "ochoextracts-com";
+export const BESOS_SITE = "besos-store";
+export const MADLABS_SITE = "madlabsbrand-com";
+export const CALICLEAR_SITE = "caliclearvapes-com";
+export const HITZ_SITE = "hitzdisposablez-com";
 
 // ── Unified taxonomy ─────────────────────────────────────────────────────────
 // Products are grouped by *concept*, not by source, so the same kind of product
@@ -496,7 +500,7 @@ function normalizeWeedmapsDetail(p: WeedmapsProduct, category: string): ShopProd
   };
 }
 
-// ── Flat drug sources (streetcocaineshop + dmtshopping + shoppuff) ───────────
+// ── Flat sources (streetcocaineshop + dmtshopping + shoppuff + disposable shops) ───────────
 async function readFlatIndex(site: string): Promise<FlatProduct[]> {
   const data = await readJsonCached(path.join(METADATA_DIR, site, "index.json"));
   return Array.isArray(data) ? (data as FlatProduct[]) : [];
@@ -522,6 +526,17 @@ async function readOchoProducts(): Promise<FlatProduct[]> {
   return readFlatIndex(OCHO_SITE);
 }
 
+async function readDisposablesProducts(): Promise<FlatProduct[]> {
+  const [besos, madlabs, caliclear, hitz] = await Promise.all([
+    readFlatIndex(BESOS_SITE),
+    readFlatIndex(MADLABS_SITE),
+    readFlatIndex(CALICLEAR_SITE),
+    readFlatIndex(HITZ_SITE),
+  ]);
+  // Deduplicate across these sites by slug (product routes are slug-only)
+  return dedupeBySlug([...besos, ...madlabs, ...caliclear, ...hitz]);
+}
+
 /**
  * Maps the shoppuff + ocho (hemp/THC) flat sources onto unified category slugs.
  * Shoppuff items carry their source category; prerolls are re-tagged from the
@@ -536,6 +551,25 @@ function classifyExtras(p: FlatProduct): FlatProduct | null {
   if (/preroll|pre-roll|\bjoint\b|\bblunt\b|\bdoink\b|hash hole/.test(hay)) return { ...p, category: "prerolls" };
   if (/infused|hash hole|infused donut|donut joint/.test(hay)) return { ...p, category: "infused-flower" };
   return { ...p, category: "cannabinoids" };
+}
+
+function classifyDisposables(p: FlatProduct): FlatProduct {
+  const hay = `${p.name ?? ""} ${(p.collections ?? []).join(" ")} ${p.category ?? ""}`.toLowerCase();
+  if (/pod|cartridge|cart/.test(hay)) return { ...p, category: "prefilled-pods" };
+  if (/coil/.test(hay)) return { ...p, category: "coils" };
+  if (/tank/.test(hay)) return { ...p, category: "vape-tanks" };
+  if (/mod|kit|device|starter/.test(hay)) return { ...p, category: "vape-kits" };
+  if (/liquid|juice|e-juice|salt|nicotine/.test(hay) && !/pouch|gum/.test(hay)) return { ...p, category: "e-liquid" };
+  if (/pouch/.test(hay)) return { ...p, category: "nicotine-pouches" };
+  if (/gum|strip/.test(hay)) return { ...p, category: "nicotine-gum" };
+  if (/accessor/.test(hay)) return { ...p, category: "vape-accessories" };
+  // Default: treat as disposable/prefilled style vapes -> prefilled-pods or vape-kits as fallback
+  if (/(?:disposable|hitz|besos|mad\s*labs|cali\s*clear)/.test(hay)) {
+    // If it says 'kit' or 'device' -> kits else prefilled-pods/disposables bucketed as prefilled-pods? or vape-kits? but unified has prefilled-pods; map to prefilled-pods is common
+    if (/kit|device/.test(hay)) return { ...p, category: "vape-kits" };
+    return { ...p, category: "prefilled-pods" };
+  }
+  return { ...p, category: "prefilled-pods" };
 }
 
 /** combined shoppuff + ocho extras with unified category fields */
@@ -761,11 +795,12 @@ export function categoryLabel(slug: string): string {
 }
 
 export async function getCategories(): Promise<ShopCategory[]> {
-  const [root, weedmaps, drugs, extras] = await Promise.all([
+  const [root, weedmaps, drugs, extras, disposables] = await Promise.all([
     readRootIndex(),
     readWeedmapsIndex(),
     readDrugProducts(),
     readExtrasProducts(),
+    readDisposablesProducts(),
   ]);
   const rootByCat = new Map((root?.categories ?? []).map((c) => [c.category, c]));
   const out: ShopCategory[] = [];
@@ -778,11 +813,14 @@ export async function getCategories(): Promise<ShopCategory[]> {
   const extraSites = (extra: FlatProduct[]): string =>
     [...new Set(extra.map((p) => p.site).filter(Boolean))].join(" / ");
 
+  const disposablesMapped = disposables.map((p) => classifyDisposables(p));
+
   for (const def of UNIFIED_CATEGORIES) {
     const src = def.source;
     const extra = SHOPPUFF_CATEGORIES.has(def.slug)
       ? extras.filter((p) => p.category === def.slug)
       : [];
+    const disp = def.group === "vapes" ? disposablesMapped.filter((p) => p.category === def.slug) : [];
 
     if (src.kind === "vapestore") {
       const meta = rootByCat.get(src.category);
@@ -793,19 +831,27 @@ export async function getCategories(): Promise<ShopCategory[]> {
         const item = await readItem(src.category, first.slug);
         coverFile = item ? normalizeItem(item, def.slug).images?.[0]?.file : undefined;
       }
-      const count = (meta?.count ?? index?.items?.length ?? 0) + extra.length;
+      const count = (meta?.count ?? index?.items?.length ?? 0) + extra.length + disp.length;
       if (!count) continue;
+      const sites = [
+        meta?.site ?? "vapestore",
+        extra.length ? extraSites(extra) : null,
+        disp.length ? extraSites(disp) : null,
+      ].filter(Boolean).join(" / ");
       out.push({
         slug: def.slug,
         label: def.label,
-        site: extra.length ? `${meta?.site ?? "vapestore"} / ${extraSites(extra)}` : meta?.site ?? "vapestore",
+        site: sites,
         group: def.group,
         section: def.section,
         source: meta?.source,
         count,
-        images: (meta?.images ?? 0) + extra.reduce((n, p) => n + (p.images?.length ?? 0), 0),
-        coverFile: coverFile ?? extraCover(extra[0]),
-        updatedAt: meta?.scrapedAt,
+        images:
+          (meta?.images ?? 0) +
+          extra.reduce((n, p) => n + (p.images?.length ?? 0), 0) +
+          disp.reduce((n, p) => n + (p.images?.length ?? 0), 0),
+        coverFile: coverFile ?? extraCover(extra[0]) ?? extraCover(disp[0]),
+        updatedAt: meta?.scrapedAt ?? disp[0]?.scraped_at ?? extra[0]?.scraped_at,
       });
     } else if (src.kind === "weedmaps") {
       const products = weedmaps.filter((p) => p.category === src.category);
@@ -903,6 +949,15 @@ export async function getCategory(
       pool = [...pool, ...extra.map((p) => normalizeFlat(p, def.slug))];
       const extraSites = [...new Set(extra.map((p) => p.site).filter(Boolean))].join(" / ");
       baseSite = [baseSite, extraSites].filter(Boolean).join(" / ");
+    }
+  }
+
+  if (def.group === "vapes") {
+    const disposables = (await readDisposablesProducts()).map((p) => classifyDisposables(p)).filter((p) => p.category === def.slug);
+    if (disposables.length) {
+      pool = [...pool, ...disposables.map((p) => normalizeFlat(p, def.slug))];
+      const dispSites = [...new Set(disposables.map((p) => p.site).filter(Boolean))].join(" / ");
+      baseSite = [baseSite, dispSites].filter(Boolean).join(" / ");
     }
   }
 
@@ -1037,7 +1092,7 @@ export async function getShopProduct(
     }
   }
 
-  for (const site of [SCS_SITE, DMT_SITE, K2_SITE, OCHO_SITE, SHOPPUFF_SITE]) {
+  for (const site of [SCS_SITE, DMT_SITE, K2_SITE, OCHO_SITE, SHOPPUFF_SITE, BESOS_SITE, MADLABS_SITE, CALICLEAR_SITE, HITZ_SITE]) {
     try {
       const raw = (await fs.readJson(
         path.join(METADATA_DIR, site, "products", `${slug}.json`)

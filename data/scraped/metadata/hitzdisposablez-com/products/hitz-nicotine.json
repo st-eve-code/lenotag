@@ -1,0 +1,33 @@
+{
+  "slug": "hitz-nicotine",
+  "name": "HITZ NIC",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 15,
+  "price_max": 15,
+  "currency": "USD",
+  "price_range": "$15.00",
+  "available": true,
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/01/image-12.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-nicotine__000.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/01/image-13.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-nicotine__001.jpeg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-nicotine/",
+  "scraped_at": "2026-10-24T12:10:41.676Z"
+}

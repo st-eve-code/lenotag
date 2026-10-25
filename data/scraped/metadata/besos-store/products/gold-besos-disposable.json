@@ -1,0 +1,88 @@
+{
+  "slug": "gold-besos-disposable",
+  "name": "Gold Besos",
+  "site": "besos-store",
+  "category": "all",
+  "price_min": 160,
+  "price_max": 200,
+  "currency": "USD",
+  "price_range": "$160.00 – $200.00",
+  "available": true,
+  "tags": [
+    "gold besos"
+  ],
+  "description": "Premium Gold Besos Disposable for a Smooth and Flavorful Experience\n\nThe Gold Besos Disposable is designed for consumers who value premium quality, exceptional flavor, and reliable performance. Crafted with high-quality cannabis extract, Gold Besos delivers smooth draws and consistent effects in a sleek, ready-to-use device. Whether a relaxing evening or an uplifting daytime experience is desired, a carefully selected range of strains is available to match every preference.\n\nFurthermore, it is engineered for convenience. Since no charging or refilling is required, a hassle-free vaping experience can be enjoyed from the first puff to the last. As a result, it has become a popular choice among both experienced and new consumers.\n\nWhy Choose Gold Besos?\n\nWhen compared to ordinary  vapes, the Gold Besos Disposable stands out for its quality, potency, and flavor consistency. Premium extracts are used to ensure a smooth inhale, while advanced hardware is incorporated to provide reliable performance throughout the device&#8217;s lifespan.\n\nIn addition, a variety of Indica, Sativa, and Hybrid options are offered. Therefore, users can easily select a strain that aligns with their desired experience, whether relaxation, balance, or enhanced focus is preferred.\n\nGold Besos Disposable Features\n\n• Premium cannabis extract for consistent potency\n\n• Smooth and flavorful vapor production\n\n• Convenient disposable design\n\n• Available in Indica, Sativa, and Hybrid strains\n\n• No charging or refilling required\n\n• Designed for reliability and ease of use\n\nVape Review\n\nThe Gold Besos Disposable is frequently praised for its rich flavors, dependable effects, and user-friendly design. Moreover, customers appreciate the consistent performance delivered with every draw. Because quality standards are maintained throughout production, a premium vaping experience can be expected from start to finish.\n\nIf a high-quality disposable vape is being sought, it offers the perfect combination of flavor, convenience, and performance.",
+  "description_html": "<h2>Premium Gold Besos Disposable for a Smooth and Flavorful Experience</h2>\n<p class=\"isSelectedEnd\">The <strong>Gold Besos Disposable</strong> is designed for consumers who value premium quality, exceptional flavor, and reliable performance. Crafted with high-quality cannabis extract, Gold Besos delivers smooth draws and consistent effects in a sleek, ready-to-use device. Whether a relaxing evening or an uplifting daytime experience is desired, a carefully selected range of strains is available to match every preference.</p>\n<p class=\"isSelectedEnd\">Furthermore, it is engineered for convenience. Since no charging or refilling is required, a hassle-free vaping experience can be enjoyed from the first puff to the last. As a result, it has become a popular choice among both experienced and new consumers.</p>\n<h2>Why Choose Gold Besos?</h2>\n<p class=\"isSelectedEnd\">When compared to ordinary  vapes, the <strong>Gold Besos Disposable</strong> stands out for its quality, potency, and flavor consistency. Premium extracts are used to ensure a smooth inhale, while advanced hardware is incorporated to provide reliable performance throughout the device&#8217;s lifespan.</p>\n<p class=\"isSelectedEnd\">In addition, a variety of Indica, Sativa, and Hybrid options are offered. Therefore, users can easily select a strain that aligns with their desired experience, whether relaxation, balance, or enhanced focus is preferred.</p>\n<h2>Gold Besos Disposable Features</h2>\n<ul data-spread=\"false\">\n<li>Premium cannabis extract for consistent potency</li>\n<li>Smooth and flavorful vapor production</li>\n<li>Convenient disposable design</li>\n<li>Available in Indica, Sativa, and Hybrid strains</li>\n<li>No charging or refilling required</li>\n<li>Designed for reliability and ease of use</li>\n</ul>\n<h2>Vape Review</h2>\n<p class=\"isSelectedEnd\">The <strong>Gold Besos Disposable</strong> is frequently praised for its rich flavors, dependable effects, and user-friendly design. Moreover, customers appreciate the consistent performance delivered with every draw. Because quality standards are maintained throughout production, a premium vaping experience can be expected from start to finish.</p>\n<p>If a high-quality disposable vape is being sought, it offers the perfect combination of flavor, convenience, and performance.</p>",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/06/gold-besos0.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\besos-store__gold-besos-disposable__000.jpeg"
+    },
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/06/gold-besos.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\besos-store__gold-besos-disposable__001.jpeg"
+    },
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/06/besos-gold1.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\besos-store__gold-besos-disposable__002.jpeg"
+    },
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/06/besos-gold-2.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\besos-store__gold-besos-disposable__003.jpeg"
+    }
+  ],
+  "variants": [
+    {
+      "id": 569,
+      "title": "Variant 1",
+      "price": 160,
+      "available": true
+    },
+    {
+      "id": 570,
+      "title": "Variant 2",
+      "price": 160,
+      "available": true
+    },
+    {
+      "id": 571,
+      "title": "Variant 3",
+      "price": 160,
+      "available": true
+    },
+    {
+      "id": 572,
+      "title": "Variant 4",
+      "price": 160,
+      "available": true
+    },
+    {
+      "id": 573,
+      "title": "Variant 5",
+      "price": 160,
+      "available": true
+    },
+    {
+      "id": 574,
+      "title": "Variant 6",
+      "price": 160,
+      "available": true
+    },
+    {
+      "id": 575,
+      "title": "Variant 7",
+      "price": 160,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://besos.store/product/gold-besos-disposable/",
+  "scraped_at": "2026-10-24T12:08:30.413Z"
+}

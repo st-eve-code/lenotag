@@ -1,0 +1,64 @@
+{
+  "slug": "hitz-gen-6-wholesale",
+  "name": "Hitz Gen 6 Wholesale",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 220,
+  "price_max": 220,
+  "currency": "USD",
+  "price_range": "$220.00",
+  "available": true,
+  "sku": "HD_95428",
+  "tags": [
+    "GEN 6",
+    "GEN 6 HITZ",
+    "HITZ GEN 6"
+  ],
+  "description": "",
+  "description_html": "",
+  "short_description": "20 + ALL NEW FLAVORS Hitz GEN 6 2G",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/IMG_0099.jpg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-gen-6-wholesale__000.jpg"
+    }
+  ],
+  "variants": [
+    {
+      "id": 266,
+      "title": "Variant 1",
+      "price": 220,
+      "available": true
+    },
+    {
+      "id": 267,
+      "title": "Variant 2",
+      "price": 220,
+      "available": true
+    },
+    {
+      "id": 268,
+      "title": "Variant 3",
+      "price": 220,
+      "available": true
+    },
+    {
+      "id": 269,
+      "title": "Variant 4",
+      "price": 220,
+      "available": true
+    },
+    {
+      "id": 270,
+      "title": "Variant 5",
+      "price": 220,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-gen-6-wholesale/",
+  "scraped_at": "2026-10-24T12:10:41.683Z"
+}

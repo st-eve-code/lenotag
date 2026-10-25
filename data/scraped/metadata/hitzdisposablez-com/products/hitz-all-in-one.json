@@ -1,0 +1,48 @@
+{
+  "slug": "hitz-all-in-one",
+  "name": "HITZ All In One",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 18,
+  "price_max": 18,
+  "currency": "USD",
+  "price_range": "$18.00",
+  "available": true,
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/04/IMG_0666.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-all-in-one__000.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/04/IMG_0667.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-all-in-one__001.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/04/IMG_0668.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-all-in-one__002.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/04/IMG_0670.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-all-in-one__003.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/04/IMG_0671.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-all-in-one__004.jpeg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-all-in-one/",
+  "scraped_at": "2026-10-24T12:10:41.674Z"
+}

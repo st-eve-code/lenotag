@@ -1,0 +1,35 @@
+{
+  "slug": "hitz-pink-tsunami",
+  "name": "Hitz Pink Tsunami",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 15,
+  "price_max": 15,
+  "currency": "USD",
+  "price_range": "$15.00",
+  "available": true,
+  "sku": "HD_77844",
+  "tags": [
+    "gen 7 hitz hitz sposable",
+    "hitz dispo",
+    "hitz gen 7",
+    "hitz gen 7 disposable",
+    "hitz gen 7 disposables"
+  ],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/image-3.jpg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-pink-tsunami__000.jpg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-pink-tsunami/",
+  "scraped_at": "2026-10-24T12:10:41.683Z"
+}

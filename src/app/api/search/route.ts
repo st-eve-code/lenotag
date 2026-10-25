@@ -9,6 +9,10 @@ import {
   SHOPPUFF_SITE,
   OCHO_SITE,
   DRUG_BUCKETS,
+  BESOS_SITE,
+  MADLABS_SITE,
+  CALICLEAR_SITE,
+  HITZ_SITE,
 } from "@/lib/catalog";
 
 const ROOT = process.cwd();
@@ -120,6 +124,23 @@ function classifyDrugBucket(p: FlatEntry): string {
   return "other";
 }
 
+function classifyDisposableEntry(p: FlatEntry): string {
+  const hay = `${p.name ?? ""} ${(p.collections ?? []).join(" ")} ${p.category ?? ""}`.toLowerCase();
+  if (/pod|cartridge|cart/.test(hay)) return "prefilled-pods";
+  if (/coil/.test(hay)) return "coils";
+  if (/tank/.test(hay)) return "vape-tanks";
+  if (/mod|kit|device|starter/.test(hay)) return "vape-kits";
+  if (/liquid|juice|e-juice|salt/.test(hay) && !/pouch|gum/.test(hay)) return "e-liquid";
+  if (/pouch/.test(hay)) return "nicotine-pouches";
+  if (/gum|strip/.test(hay)) return "nicotine-gum";
+  if (/accessor/.test(hay)) return "vape-accessories";
+  if (/(?:disposable|hitz|besos|mad\s*labs|cali\s*clear)/.test(hay)) {
+    if (/kit|device/.test(hay)) return "vape-kits";
+    return "prefilled-pods";
+  }
+  return "prefilled-pods";
+}
+
 function makeEntry(
   slug: string,
   category: string,
@@ -158,13 +179,17 @@ async function buildIndex(): Promise<IndexEntry[]> {
     })
   );
 
-  // 2. Flat sources (SCS, DMT, weedmaps, shoppuff, ocho)
+  // 2. Flat sources (SCS, DMT, weedmaps, shoppuff, ocho, disposable shops)
   const flatSites: Array<{ site: string; categoryFn: (p: FlatEntry) => string }> = [
     { site: SCS_SITE, categoryFn: classifyDrugBucket },
     { site: DMT_SITE, categoryFn: classifyDrugBucket },
     { site: WM_SITE, categoryFn: (p) => p.category ?? "cannabinoids" },
     { site: SHOPPUFF_SITE, categoryFn: (p) => p.category ?? "cannabinoids" },
     { site: OCHO_SITE, categoryFn: (p) => p.category ?? "cannabinoids" },
+    { site: BESOS_SITE, categoryFn: classifyDisposableEntry },
+    { site: MADLABS_SITE, categoryFn: classifyDisposableEntry },
+    { site: CALICLEAR_SITE, categoryFn: classifyDisposableEntry },
+    { site: HITZ_SITE, categoryFn: classifyDisposableEntry },
   ];
 
   await Promise.all(
@@ -179,7 +204,7 @@ async function buildIndex(): Promise<IndexEntry[]> {
           );
         }
       } catch {
-        // site missing — skip
+        // site missing - skip
       }
     })
   );

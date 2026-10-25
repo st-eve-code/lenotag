@@ -1,0 +1,33 @@
+{
+  "slug": "hitz-all-in-one-2g-disposable",
+  "name": "Hitz All In One 2g Disposable",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 20,
+  "price_max": 20,
+  "currency": "USD",
+  "price_range": "$20.00",
+  "available": true,
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/03/image.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-all-in-one-2g-disposable__000.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/03/image-1.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-all-in-one-2g-disposable__001.jpeg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-all-in-one-2g-disposable/",
+  "scraped_at": "2026-10-24T12:10:41.674Z"
+}

@@ -1,0 +1,66 @@
+{
+  "slug": "hitz-extra",
+  "name": "Hitz Extra",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 150,
+  "price_max": 150,
+  "currency": "USD",
+  "price_range": "$150.00",
+  "available": true,
+  "sku": "HD_56377",
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "List strains you would like in bulk purchase on note section at check out",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/IMG_6903.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-extra__000.jpeg"
+    }
+  ],
+  "variants": [
+    {
+      "id": 298,
+      "title": "Variant 1",
+      "price": 150,
+      "available": true
+    },
+    {
+      "id": 299,
+      "title": "Variant 2",
+      "price": 150,
+      "available": true
+    },
+    {
+      "id": 310,
+      "title": "Variant 3",
+      "price": 150,
+      "available": true
+    },
+    {
+      "id": 311,
+      "title": "Variant 4",
+      "price": 150,
+      "available": true
+    },
+    {
+      "id": 312,
+      "title": "Variant 5",
+      "price": 150,
+      "available": true
+    },
+    {
+      "id": 313,
+      "title": "Variant 6",
+      "price": 150,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-extra/",
+  "scraped_at": "2026-10-24T12:10:41.679Z"
+}

@@ -1,0 +1,33 @@
+{
+  "slug": "hitz-safari-edition-bulk-25pcs",
+  "name": "Hitz Safari Edition Bulk- 25pcs",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 400,
+  "price_max": 400,
+  "currency": "USD",
+  "price_range": "$400.00",
+  "available": true,
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/09/68c29cae-a53d-42b6-8543-12b3bb389208.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-safari-edition-bulk-25pcs__000.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/09/afab2e53-4de0-4de2-93f7-433a48a0d480.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-safari-edition-bulk-25pcs__001.jpeg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-safari-edition-bulk-25pcs/",
+  "scraped_at": "2026-10-24T12:10:41.670Z"
+}

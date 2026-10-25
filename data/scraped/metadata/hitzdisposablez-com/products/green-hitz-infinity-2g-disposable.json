@@ -1,0 +1,33 @@
+{
+  "slug": "green-hitz-infinity-2g-disposable",
+  "name": "Green Hitz Infinity 2g Disposable",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 17,
+  "price_max": 17,
+  "currency": "USD",
+  "price_range": "$17.00",
+  "available": true,
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/01/image-7.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__green-hitz-infinity-2g-disposable__000.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/01/image-6.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__green-hitz-infinity-2g-disposable__001.jpeg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/green-hitz-infinity-2g-disposable/",
+  "scraped_at": "2026-10-24T12:10:41.676Z"
+}

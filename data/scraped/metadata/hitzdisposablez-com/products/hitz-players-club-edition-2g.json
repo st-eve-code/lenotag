@@ -1,0 +1,43 @@
+{
+  "slug": "hitz-players-club-edition-2g",
+  "name": "Hitz Players Club Edition 2G",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 20,
+  "price_max": 20,
+  "currency": "USD",
+  "price_range": "$20.00",
+  "available": true,
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/08/b2bd13b9-2eb6-46a7-bcc8-338fbaf5ea2c-2.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-players-club-edition-2g__000.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/08/3b61b433-c258-4cc3-832e-0942992f3d47.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-players-club-edition-2g__001.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/08/ba0aad7c-0e0c-49f9-ade9-1e804b25061a.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-players-club-edition-2g__002.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/08/5bf3e7da-666d-4187-853a-1fa5aff25ea9-1.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-players-club-edition-2g__003.jpeg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-players-club-edition-2g/",
+  "scraped_at": "2026-10-24T12:10:41.673Z"
+}

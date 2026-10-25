@@ -1,0 +1,28 @@
+{
+  "slug": "limon-besos",
+  "name": "Limon-besos",
+  "site": "besos-store",
+  "category": "all",
+  "price_min": 25,
+  "price_max": 25,
+  "currency": "USD",
+  "price_range": "$25.00",
+  "available": true,
+  "tags": [],
+  "description": "Limon-Besos Disposable\n\nLimon-Besos disposable is a zesty, refreshing vape built for anyone who wants a bright citrus kick in every puff.\n\nA Flavor You&#8217;ll Love\n\nThe Limon-Besos disposable delivers a tangy lemon burst balanced with a touch of sweetness from the first puff. Its smooth blend avoids the harsh, sour aftertaste common in other citrus disposables. As a result, it&#8217;s become a favorite among vapers who want a crisp, refreshing flavor.\n\nPractical, Portable Design\n\nThis disposable is compact and lightweight, so it fits easily in your pocket or bag. It also comes pre-filled and pre-charged, which means it&#8217;s ready to use straight out of the box.\n\nKey Features\n\n• Flavor: Limon-Besos (zesty lemon with a sweet finish)\n\n• Format: fully disposable, no refills needed\n\n• Easy to use: no buttons, no settings\n\n• Great for beginners and experienced vapers alike\n\nWhy Choose This Disposable?\n\nIn short, the it combines flavor, convenience, and simplicity in one device. If you want a crisp, citrusy vaping experience, this is a great place to start.",
+  "description_html": "<h3 class=\"mt-3 -mb-1 text-[1.125rem] font-bold\" dir=\"ltr\">Limon-Besos Disposable</h3>\n<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\"><strong>Limon-Besos disposable</strong> is a zesty, refreshing vape built for anyone who wants a bright citrus kick in every puff.</p>\n<h4 class=\"mt-2 -mb-1 text-base font-bold\" dir=\"ltr\">A Flavor You&#8217;ll Love</h4>\n<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">The <strong>Limon-Besos disposable</strong> delivers a tangy lemon burst balanced with a touch of sweetness from the first puff. Its smooth blend avoids the harsh, sour aftertaste common in other citrus disposables. As a result, it&#8217;s become a favorite among vapers who want a crisp, refreshing flavor.</p>\n<h4 class=\"mt-2 -mb-1 text-base font-bold\" dir=\"ltr\">Practical, Portable Design</h4>\n<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">This disposable is compact and lightweight, so it fits easily in your pocket or bag. It also comes pre-filled and pre-charged, which means it&#8217;s ready to use straight out of the box.</p>\n<h4 class=\"mt-2 -mb-1 text-base font-bold\" dir=\"ltr\">Key Features</h4>\n<ul class=\"[li_&amp;]:mb-0 [li_&amp;]:mt-1 [li_&amp;]:gap-1 [&amp;:not(:last-child)_ul]:pb-1 [&amp;:not(:last-child)_ol]:pb-1 list-disc flex flex-col gap-1 pl-8 mb-3 print:block print:space-y-1\" dir=\"ltr\">\n<li class=\"font-claude-response-body whitespace-normal break-words pl-2\">Flavor: Limon-Besos (zesty lemon with a sweet finish)</li>\n<li class=\"font-claude-response-body whitespace-normal break-words pl-2\">Format: fully disposable, no refills needed</li>\n<li class=\"font-claude-response-body whitespace-normal break-words pl-2\">Easy to use: no buttons, no settings</li>\n<li class=\"font-claude-response-body whitespace-normal break-words pl-2\">Great for beginners and experienced vapers alike</li>\n</ul>\n<h4 class=\"mt-2 -mb-1 text-base font-bold\" dir=\"ltr\">Why Choose This Disposable?</h4>\n<p class=\"font-claude-response-body break-words whitespace-normal\" dir=\"ltr\">In short, the <strong>it </strong>combines flavor, convenience, and simplicity in one device. If you want a crisp, citrusy vaping experience, this is a great place to start.</p>",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/08/limon-besos-nobg.png",
+      "alt": "limon-besos",
+      "local": "data\\scraped\\images\\besos-store__limon-besos__000.png"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://besos.store/product/limon-besos/",
+  "scraped_at": "2026-10-24T12:08:30.412Z"
+}

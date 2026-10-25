@@ -1,0 +1,118 @@
+{
+  "slug": "hitz-gen-7",
+  "name": "Hitz Gen 7",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 35,
+  "price_max": 35,
+  "currency": "USD",
+  "price_range": "$35.00",
+  "available": true,
+  "sku": "HD_98559",
+  "tags": [
+    "gen 7 hitz",
+    "hitz gen 7",
+    "hitz gen 7 disposable"
+  ],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2025/08/IMG_1555.jpg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-gen-7__000.jpg"
+    }
+  ],
+  "variants": [
+    {
+      "id": 210,
+      "title": "Variant 1",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 217,
+      "title": "Variant 2",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 218,
+      "title": "Variant 3",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 219,
+      "title": "Variant 4",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 220,
+      "title": "Variant 5",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 221,
+      "title": "Variant 6",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 222,
+      "title": "Variant 7",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 223,
+      "title": "Variant 8",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 224,
+      "title": "Variant 9",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 225,
+      "title": "Variant 10",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 226,
+      "title": "Variant 11",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 227,
+      "title": "Variant 12",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 228,
+      "title": "Variant 13",
+      "price": 35,
+      "available": true
+    },
+    {
+      "id": 229,
+      "title": "Variant 14",
+      "price": 35,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-gen-7/",
+  "scraped_at": "2026-10-24T12:10:41.683Z"
+}

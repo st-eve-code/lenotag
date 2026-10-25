@@ -1,0 +1,38 @@
+{
+  "slug": "hitz-safari-edition",
+  "name": "Hitz Safari Edition",
+  "site": "hitzdisposablez-com",
+  "category": "all",
+  "price_min": 20,
+  "price_max": 20,
+  "currency": "USD",
+  "price_range": "$20.00",
+  "available": true,
+  "tags": [],
+  "description": "",
+  "description_html": "",
+  "short_description": "",
+  "images": [
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/07/4715874a-b2eb-471b-9578-98da05a50f83.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-safari-edition__000.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/07/c7d86c89-b47d-4d9d-b046-4d4645a4ab83.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-safari-edition__001.jpeg"
+    },
+    {
+      "url": "https://hitzdisposablez.com/wp-content/uploads/2026/07/fb453228-40aa-45d6-abd7-d743e96e2001.jpeg",
+      "alt": "",
+      "local": "data\\scraped\\images\\hitzdisposablez-com__hitz-safari-edition__002.jpeg"
+    }
+  ],
+  "variants": [],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://hitzdisposablez.com/product/hitz-safari-edition/",
+  "scraped_at": "2026-10-24T12:10:41.673Z"
+}

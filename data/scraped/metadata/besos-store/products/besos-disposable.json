@@ -1,0 +1,77 @@
+{
+  "slug": "besos-disposable",
+  "name": "BESOS DISPOSABLE WHOLESALE",
+  "site": "besos-store",
+  "category": "all",
+  "price_min": 600,
+  "price_max": 600,
+  "currency": "USD",
+  "price_range": "$600.00",
+  "available": true,
+  "tags": [],
+  "description": "Besos Disposable – Premium Cannabis Vape\n\nBesos Disposable is a premium, ready-to-use cannabis vape designed for smooth flavor, consistent performance, and effortless convenience. Pre-filled and draw-activated, it delivers rich, strain-inspired taste with every puff.\n\nPerfect for on-the-go use, It offers a balanced experience with reliable potency and clean, easy draws. No charging or refilling needed—just open and enjoy.\n\nIf you want, I can also generate meta title, meta description, slug, and keyword set for Yoast.",
+  "description_html": "<p data-start=\"80\" data-end=\"124\"><strong data-start=\"80\" data-end=\"124\">Besos Disposable – Premium Cannabis Vape</strong></p>\n<p data-start=\"126\" data-end=\"351\">Besos Disposable is a premium, ready-to-use cannabis vape designed for smooth flavor, consistent performance, and effortless convenience. Pre-filled and draw-activated, it delivers rich, strain-inspired taste with every puff.</p>\n<p data-start=\"353\" data-end=\"523\">Perfect for on-the-go use, It offers a balanced experience with reliable potency and clean, easy draws. No charging or refilling needed—just open and enjoy.</p>\n<p data-start=\"525\" data-end=\"624\" data-is-last-node=\"\" data-is-only-node=\"\">If you want, I can also generate <strong data-start=\"558\" data-end=\"613\">meta title, meta description, slug, and keyword set</strong> for Yoast.</p>",
+  "short_description": "Besos Disposable is a premium, ready-to-use cannabis vape designed for smooth flavor, consistent performance, and easy on-the-go use.",
+  "images": [
+    {
+      "url": "https://besos.store/wp-content/uploads/2026/04/Screen-Shot-2024-11-08-at-9.53.24-AM-300x300-1.png",
+      "alt": "Besos Disposables",
+      "local": "data\\scraped\\images\\besos-store__besos-disposable__000.png"
+    }
+  ],
+  "variants": [
+    {
+      "id": 433,
+      "title": "Variant 1",
+      "price": 600,
+      "available": true
+    },
+    {
+      "id": 434,
+      "title": "Variant 2",
+      "price": 600,
+      "available": true
+    },
+    {
+      "id": 435,
+      "title": "Variant 3",
+      "price": 600,
+      "available": true
+    },
+    {
+      "id": 436,
+      "title": "Variant 4",
+      "price": 600,
+      "available": true
+    },
+    {
+      "id": 437,
+      "title": "Variant 5",
+      "price": 600,
+      "available": true
+    },
+    {
+      "id": 438,
+      "title": "Variant 6",
+      "price": 600,
+      "available": true
+    },
+    {
+      "id": 439,
+      "title": "Variant 7",
+      "price": 600,
+      "available": true
+    },
+    {
+      "id": 440,
+      "title": "Variant 8",
+      "price": 600,
+      "available": true
+    }
+  ],
+  "collections": [
+    "all"
+  ],
+  "source_url": "https://besos.store/product/besos-disposable/",
+  "scraped_at": "2026-10-24T12:08:30.415Z"
+}
