@@ -15,7 +15,7 @@ export interface Policy {
 }
 
 export const COMPANY_NAME =
-  process.env.NEXT_PUBLIC_COMPANY_NAME || "nofacetrap";
+  process.env.NEXT_PUBLIC_COMPANY_NAME || "lenotag";
 export const COMPANY_ADDRESS =
   process.env.NEXT_PUBLIC_COMPANY_ADDRESS || "Texas, USA";
 export const COMPANY_NUMBER = process.env.NEXT_PUBLIC_COMPANY_NUMBER || "";

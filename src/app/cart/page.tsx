@@ -36,7 +36,7 @@ const CHECKOUT_ACCENT = "#000000";
 // Height (px) of the tear-off section of the receipt that holds the buttons.
 const STUB_H = 156;
 
-const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME ?? "nofacetrap";
+const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME ?? "lenotag";
 
 type Method = "whatsapp" | "bitcoin" | "cashapp" | "applepay" | "zelle";
 

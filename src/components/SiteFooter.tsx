@@ -14,7 +14,7 @@ interface FooterColumn {
   links: FooterLink[];
 }
 
-const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME || "nofacetrap";
+const COMPANY_NAME = process.env.NEXT_PUBLIC_COMPANY_NAME || "lenotag";
 const COMPANY_ADDRESS = process.env.NEXT_PUBLIC_COMPANY_ADDRESS || "";
 const COMPANY_NUMBER = process.env.NEXT_PUBLIC_COMPANY_NUMBER || "";
 
