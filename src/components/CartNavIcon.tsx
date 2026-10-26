@@ -13,10 +13,10 @@ export function CartNavIcon() {
     <Link
       href="/cart"
       aria-label={`Cart, ${shown} ${shown === 1 ? "item" : "items"}`}
-      className="flex items-center gap-1.5 rounded-[var(--radius-8)] text-white outline-offset-4 transition-colors duration-150 hover:text-[#91f974] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#91f974]"
+      className="flex items-center gap-1.5 rounded-[var(--radius-8)] text-[#111f2a] outline-offset-4 transition-colors duration-150 hover:text-[#357a25] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#5eb047]"
     >
       <svg
-        className="h-6 w-6"
+        className="h-[22px] w-[22px]"
         viewBox="0 0 24 24"
         fill="none"
         stroke="currentColor"
@@ -29,7 +29,9 @@ export function CartNavIcon() {
         <circle cx="9.5" cy="19.5" r="1.4" />
         <circle cx="17.5" cy="19.5" r="1.4" />
       </svg>
-      <span className="min-w-[1ch] text-sm font-bold tabular-nums">{label}</span>
+      <span className="min-w-[1ch] rounded-full bg-[#eefae8] px-1.5 text-[13px] font-bold tabular-nums text-[#24591f]">
+        {label}
+      </span>
     </Link>
   );
 }

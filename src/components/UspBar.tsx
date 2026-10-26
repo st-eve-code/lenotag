@@ -6,7 +6,7 @@ interface UspItem {
   icon: ReactNode;
 }
 
-const iconClass = "h-4 w-4 shrink-0 text-[#223d54]";
+const iconClass = "h-4 w-4 shrink-0 text-[#357a25]";
 
 const ITEMS: UspItem[] = [
   {
@@ -52,14 +52,14 @@ const ITEMS: UspItem[] = [
 
 export function UspBar() {
   return (
-    <div className="overflow-x-auto bg-[var(--color-bg-surface)]">
+    <div className="overflow-x-auto border-b border-[#e3eddc] bg-[#f4f9f0]">
       <div className="container-vapestore flex w-max items-center gap-4 py-1.5 whitespace-nowrap md:w-auto md:items-center md:justify-center">
         {ITEMS.map((item, i) => (
           <Fragment key={item.title}>
             {i > 0 ? (
-              <span aria-hidden="true" className="hidden h-4 w-px bg-[#bbd6ed] md:block" />
+              <span aria-hidden="true" className="hidden h-4 w-px bg-[#cfe3c4] md:block" />
             ) : null}
-            <span className="flex items-center gap-1.5 text-[12px] text-[#223d54]">
+            <span className="flex items-center gap-1.5 text-[12px] text-[#111f2a]">
               {item.icon}
               <strong className="font-bold">{item.title}</strong>
               {item.body ? <span>{item.body}</span> : null}

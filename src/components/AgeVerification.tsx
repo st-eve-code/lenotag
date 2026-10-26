@@ -64,7 +64,7 @@ export function AgeVerification() {
       className="agegate-dialog m-auto max-h-[100dvh] w-full max-w-[440px] overflow-y-auto overflow-x-hidden bg-transparent p-4 backdrop:bg-[#04090e]/75 backdrop:backdrop-blur-md"
     >
       <style>{`
-        .agegate-dialog { --gate-accent: var(--color-accent, #6ea8ff); }
+        .agegate-dialog { --gate-accent: #91f974; }
 
         @keyframes agegate-in { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: none; } }
         @keyframes agegate-fade { from { opacity: 0; } to { opacity: 1; } }
@@ -137,18 +137,18 @@ export function AgeVerification() {
                 You must be 18 or over
               </h2>
               <p className="mx-auto mt-3 max-w-[34ch] text-[14px] leading-relaxed text-white/60">
-                We can&rsquo;t let you into nofacetrap. The law requires you to be 18 or
+                We can&rsquo;t let you into nofacetrap. UK law requires you to be 18 or
                 older to view and buy vaping products.
               </p>
               <div className="mt-7 flex flex-col items-center gap-3">
-                {/* <Link
+                <Link
                   href="https://www.nhs.uk/live-well/quit-smoking/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-flex h-11 items-center justify-center rounded-xl border border-white/15 px-5 text-[14px] font-semibold text-white transition-colors duration-150 hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--gate-accent)]"
                 >
                   Get help with quitting smoking
-                </Link> */}
+                </Link>
                 <button
                   type="button"
                   onClick={() => setDenied(false)}

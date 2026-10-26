@@ -66,7 +66,7 @@ function CheckIcon() {
 }
 
 const PAGE_LINK =
-  "inline-flex h-9 min-w-9 items-center justify-center rounded-[var(--radius-pill)] px-3 text-[15px] font-semibold transition-colors duration-[var(--duration-base)]";
+  "inline-flex h-10 min-w-10 items-center justify-center rounded-[var(--radius-pill)] px-3.5 text-[14px] font-semibold transition-colors duration-[var(--duration-base)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5eb047]";
 
 export function BestProducts({ items }: { items: ShowcaseProduct[] }) {
   const [page, setPage] = useState(1);
@@ -120,13 +120,13 @@ export function BestProducts({ items }: { items: ShowcaseProduct[] }) {
 
   return (
     <div ref={gridRef} className="scroll-mt-28">
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4 lg:gap-5">
+      <div className="grid grid-cols-2 gap-3 md:grid-cols-3 lg:grid-cols-4 lg:gap-5">
         {visible.map((item) => {
           const added = justAdded === cartKey(item);
           return (
             <article
               key={cartKey(item)}
-              className="group relative flex flex-col overflow-hidden rounded-2xl border border-[var(--color-border)] bg-white p-1 transition-shadow duration-[var(--duration-base)] hover:shadow-[var(--shadow-lg)]"
+              className="group relative flex flex-col overflow-hidden rounded-[24px] border border-[var(--color-border)] bg-white p-2 transition-shadow duration-[var(--duration-base)] hover:shadow-[0_18px_38px_-20px_rgba(8,15,21,0.4)]"
             >
               <FavouriteButton
                 item={{
@@ -138,11 +138,11 @@ export function BestProducts({ items }: { items: ShowcaseProduct[] }) {
                   image: item.image,
                   href: item.href,
                 }}
-                className="absolute right-3 top-3 z-10 h-8 w-8 bg-white/90 shadow-[var(--shadow-sm)] backdrop-blur-sm hover:bg-white"
+                className="absolute right-4 top-4 z-10 h-8 w-8 bg-white/90 shadow-[var(--shadow-sm)] backdrop-blur-sm hover:bg-white"
               />
               <Link
                 href={item.href}
-                className="relative mb-1 block overflow-hidden rounded-t-xl rounded-b bg-[var(--color-bg-surface)]"
+                className="relative block overflow-hidden rounded-[18px] bg-[#f4f9f0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5eb047]"
               >
                 {item.image ? (
                   <Image
@@ -150,42 +150,42 @@ export function BestProducts({ items }: { items: ShowcaseProduct[] }) {
                     alt={item.title}
                     width={item.image.width ?? 800}
                     height={item.image.height ?? 800}
-                    className="aspect-square w-full object-cover transition-transform duration-[var(--duration-moderate)] ease-[var(--ease-custom-1)] group-hover:scale-105"
+                    className="aspect-square w-full object-cover transition-transform duration-700 ease-[var(--ease-custom-1)] group-hover:scale-105 motion-reduce:transition-none"
                     unoptimized
                   />
                 ) : (
-                  <div className="aspect-square w-full bg-[var(--color-bg-surface)]" />
+                  <div className="aspect-square w-full bg-[#f4f9f0]" />
                 )}
               </Link>
 
-              <div className="flex grow flex-col p-2">
-                <span className="mb-1 text-xs font-medium text-[var(--color-text-muted)]">
+              <div className="flex grow flex-col px-2 pb-1 pt-3.5">
+                <span className="mb-1 text-[12px] font-semibold text-[#357a25]">
                   {item.brand}
                 </span>
                 <Link
                   href={item.href}
-                  className="mb-2 line-clamp-2 text-[14px] font-medium leading-[1.35] text-[var(--color-text-primary)] transition-colors duration-[var(--duration-base)] group-hover:text-[#2563eb] md:text-[15px]"
+                  className="mb-2 line-clamp-2 text-[14px] font-semibold leading-[1.35] text-[#111f2a] md:text-[15px]"
                 >
                   {item.title}
                 </Link>
 
-                <div className="mt-auto flex flex-col gap-2 pt-3">
+                <div className="mt-auto flex flex-col gap-3 pt-3">
                   <Price
                     price={item.price}
-                    className="tabular text-[18px] font-bold leading-tight text-[#3f3f46]"
+                    className="tabular text-[18px] font-extrabold leading-tight text-[#111f2a]"
                   />
                   <button
                     type="button"
                     onClick={() => handleAdd(item)}
                     aria-label={`Add ${item.title} to cart`}
-                    className={`flex w-full items-center justify-center gap-1.5 whitespace-nowrap rounded-[var(--radius-8)] px-2 py-2 text-[14px] font-semibold transition-colors duration-[var(--duration-moderate)] md:px-3 md:text-[15px] ${
+                    className={`flex h-11 w-full items-center justify-center gap-1.5 whitespace-nowrap rounded-[var(--radius-8)] px-2 text-[14px] font-bold transition-colors duration-[var(--duration-moderate)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#5eb047] md:px-3 md:text-[15px] ${
                       added
                         ? "bg-[var(--color-green-dark)] text-white"
-                        : "bg-black text-white hover:bg-[#111f2a]"
+                        : "bg-[#111f2a] text-white hover:bg-[#1f3345]"
                     }`}
                   >
                     {added ? <CheckIcon /> : <CartIcon />}
-                    <span aria-live="polite">{added ? "Added" : "Add to Cart"}</span>
+                    <span aria-live="polite">{added ? "Added" : "Add to cart"}</span>
                   </button>
                 </div>
               </div>
@@ -203,7 +203,7 @@ export function BestProducts({ items }: { items: ShowcaseProduct[] }) {
             type="button"
             onClick={() => goTo(current - 1)}
             disabled={current === 1}
-            className={`${PAGE_LINK} border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-bg-surface)] disabled:cursor-not-allowed disabled:opacity-40`}
+            className={`${PAGE_LINK} border border-[var(--color-border)] bg-white text-[#111f2a] hover:bg-[#f4f9f0] disabled:cursor-not-allowed disabled:opacity-40`}
           >
             Previous
           </button>
@@ -220,7 +220,7 @@ export function BestProducts({ items }: { items: ShowcaseProduct[] }) {
               <span
                 key={n}
                 aria-current="page"
-                className={`${PAGE_LINK} bg-black text-white`}
+                className={`${PAGE_LINK} bg-[#111f2a] text-white`}
               >
                 {n}
               </span>
@@ -229,7 +229,7 @@ export function BestProducts({ items }: { items: ShowcaseProduct[] }) {
                 key={n}
                 type="button"
                 onClick={() => goTo(n)}
-                className={`${PAGE_LINK} border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-bg-surface)]`}
+                className={`${PAGE_LINK} border border-[var(--color-border)] bg-white text-[#111f2a] hover:bg-[#f4f9f0]`}
               >
                 {n}
               </button>
@@ -240,7 +240,7 @@ export function BestProducts({ items }: { items: ShowcaseProduct[] }) {
             type="button"
             onClick={() => goTo(current + 1)}
             disabled={current === pages}
-            className={`${PAGE_LINK} border border-[var(--color-border)] text-[var(--color-text-primary)] hover:bg-[var(--color-bg-surface)] disabled:cursor-not-allowed disabled:opacity-40`}
+            className={`${PAGE_LINK} border border-[var(--color-border)] bg-white text-[#111f2a] hover:bg-[#f4f9f0] disabled:cursor-not-allowed disabled:opacity-40`}
           >
             Next
           </button>

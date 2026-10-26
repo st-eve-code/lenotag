@@ -17,9 +17,9 @@ import { imageSrc } from "@/lib/image";
 //   NEXT_PUBLIC_BTC_ADDRESS=bc1...             (your RECEIVING address only)
 const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
 const BTC_ADDRESS = process.env.NEXT_PUBLIC_BTC_ADDRESS ?? "";
-/* const CASHAPP_TAG = process.env.NEXT_PUBLIC_CASHAPP_TAG ?? "";
+const CASHAPP_TAG = process.env.NEXT_PUBLIC_CASHAPP_TAG ?? "";
 const APPLE_PAY_INFO = process.env.NEXT_PUBLIC_APPLE_PAY_INFO ?? "";
-const ZELLE_INFO = process.env.NEXT_PUBLIC_ZELLE_INFO ?? ""; */
+const ZELLE_INFO = process.env.NEXT_PUBLIC_ZELLE_INFO ?? "";
 
 // Shipping: a flat fee, discounted when the cart subtotal is above the threshold.
 const SHIPPING_FEE = Number(process.env.NEXT_PUBLIC_SHIPPING_FEE ?? 0);
@@ -220,7 +220,11 @@ export default function CartPage() {
       return;
     }
     setShowBtc(false);
-    setShowAltPay(false);
+    setShowAltPay(true);
+    setTimeout(
+      () => altPayRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
+      80,
+    );
   };
 
   const copy = async (text: string, what: "address" | "amount" | "receipt") => {
@@ -254,25 +258,25 @@ export default function CartPage() {
       ? !WHATSAPP_NUMBER
       : method === "bitcoin"
       ? !BTC_ADDRESS
-      : /* method === "cashapp"
+      : method === "cashapp"
       ? !CASHAPP_TAG
       : method === "applepay"
       ? !APPLE_PAY_INFO
       : method === "zelle"
       ? !ZELLE_INFO
-      : */ false;
+      : false;
 
   const methodName =
     method === "whatsapp"
       ? "WhatsApp"
       : method === "bitcoin"
       ? "Bitcoin"
-      /* : method === "cashapp"
+      : method === "cashapp"
       ? "Cash App"
       : method === "applepay"
       ? "Apple Pay"
       : method === "zelle"
-      ? "Zelle" */
+      ? "Zelle"
       : "Payment";
 
   const paymentLabel =
@@ -280,12 +284,12 @@ export default function CartPage() {
       ? "WhatsApp order"
       : method === "bitcoin"
       ? "Bitcoin"
-      /* : method === "cashapp"
+      : method === "cashapp"
       ? "Cash App"
       : method === "applepay"
       ? "Apple Pay"
       : method === "zelle"
-      ? "Zelle" */
+      ? "Zelle"
       : "Payment";
 
   // Plain-text version of the receipt for the copy button
@@ -305,6 +309,10 @@ export default function CartPage() {
       `Subtotal (${count} ${count === 1 ? "item" : "items"}): ${subtotal !== null ? fmt(subtotal) : "-"}`,
       `Shipping${shippingDiscountApplies ? ` (${SHIPPING_DISCOUNT_PERCENT}% discount)` : ""}: ${fmt(shipping)}`,
       `Total: ${total !== null ? fmt(total) : "-"}`,
+      "",
+      ...(method === "cashapp" && CASHAPP_TAG ? [`Cash App: $${CASHAPP_TAG.replace(/^\$/, "")}`] : []),
+      ...(method === "applepay" && APPLE_PAY_INFO ? [`Apple Pay: ${APPLE_PAY_INFO}`] : []),
+      ...(method === "zelle" && ZELLE_INFO ? [`Zelle: ${ZELLE_INFO}`] : []),
     ].join("\n");
 
   return (
@@ -590,6 +598,12 @@ export default function CartPage() {
                       ? "Add NEXT_PUBLIC_WHATSAPP_NUMBER to .env.local to enable this."
                       : method === "bitcoin"
                       ? "Add NEXT_PUBLIC_BTC_ADDRESS to .env.local to enable this."
+                      : method === "cashapp"
+                      ? "Add NEXT_PUBLIC_CASHAPP_TAG to .env.local to enable this."
+                      : method === "applepay"
+                      ? "Add NEXT_PUBLIC_APPLE_PAY_INFO to .env.local to enable this."
+                      : method === "zelle"
+                      ? "Add NEXT_PUBLIC_ZELLE_INFO to .env.local to enable this."
                       : "Add the required env var to .env.local to enable this."}
                   </p>
                 ) : null}

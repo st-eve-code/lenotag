@@ -31,13 +31,13 @@ export function CurrencyDropdown() {
         aria-expanded={open}
         aria-label="Change currency"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 rounded-[var(--radius-8)] px-2 py-1.5 text-sm font-bold text-white transition-colors duration-[var(--duration-base)] hover:bg-white/10"
+        className="flex items-center gap-1.5 rounded-[var(--radius-8)] px-2 py-1.5 text-[14px] font-semibold text-[#111f2a] transition-colors duration-[var(--duration-base)] hover:bg-[#f3f6f0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#5eb047]"
       >
         <span>
           {selectedCurrency.symbol} {selectedCurrency.code}
         </span>
         <svg
-          className={`h-3 w-3 opacity-70 transition-transform duration-[var(--duration-base)] ${open ? "rotate-180" : ""}`}
+          className={`h-3 w-3 opacity-60 transition-transform duration-[var(--duration-base)] ${open ? "rotate-180" : ""}`}
           viewBox="0 0 16 16"
           fill="none"
           stroke="currentColor"
@@ -51,7 +51,7 @@ export function CurrencyDropdown() {
       {open ? (
         <ul
           role="listbox"
-          className="absolute right-0 top-full z-[110] mt-2 w-28 overflow-hidden rounded-[var(--radius-8)] border border-[#1f2935] bg-[#111f2a] py-1 shadow-[var(--shadow-lg)]"
+          className="absolute right-0 top-full z-[110] mt-2 w-32 overflow-hidden rounded-[var(--radius-12)] border border-[#e8ece4] bg-white py-1 shadow-[0_20px_40px_-18px_rgba(8,15,21,0.35)]"
         >
           {CURRENCIES.map((currency) => (
             <li key={currency.code}>
@@ -63,12 +63,12 @@ export function CurrencyDropdown() {
                   setCurrency(currency.code);
                   setOpen(false);
                 }}
-                className={`flex w-full items-center justify-between px-3 py-2 text-sm font-bold transition-colors duration-[var(--duration-base)] hover:bg-white/10 ${
-                  currency.code === selectedCurrency.code ? "text-[#91f974]" : "text-white"
+                className={`flex w-full items-center justify-between px-3.5 py-2 text-[14px] font-semibold transition-colors duration-[var(--duration-base)] hover:bg-[#eefae8] ${
+                  currency.code === selectedCurrency.code ? "text-[#357a25]" : "text-[#111f2a]"
                 }`}
               >
                 <span>{currency.code}</span>
-                <span className="text-[#91f974]">{currency.symbol}</span>
+                <span className="text-[#357a25]">{currency.symbol}</span>
               </button>
             </li>
           ))}

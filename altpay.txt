@@ -1,0 +1,180 @@
+﻿              </div>
+            </div>
+
+            {/* Alternative payment details */}
+            {method === "bitcoin" && showBtc ? (
+              <div
+                ref={btcRef}
+                className="mt-6 scroll-mt-40 rounded-[var(--radius-16)] border border-[var(--color-border)] p-5 sm:p-8"
+              >
+                <h2 className="font-display text-[20px] font-extrabold text-[var(--color-text-primary)]">
+                  Bitcoin payment
+                </h2>
+                {orderRef ? (
+                  <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+                    Order ref {orderRef}
+                  </p>
+                ) : null}
+
+                {total === null ? (
+                  <p className="mt-3 text-sm text-[var(--color-text-muted)]">
+                    We couldn&rsquo;t work out the cart total, so the Bitcoin amount can&rsquo;t be calculated.
+                  </p>
+                ) : !rate && rateState !== "error" ? (
+                  <p className="mt-3 text-sm text-[var(--color-text-muted)]">Fetching the live rateâ€¦</p>
+                ) : rateState === "error" && !rate ? (
+                  <div className="mt-3 text-sm text-[var(--color-text-muted)]">
+                    Couldn&rsquo;t fetch the Bitcoin rate.{" "}
+                    <button
+                      type="button"
+                      onClick={() => void loadRate()}
+                      className="font-semibold text-[var(--color-text-primary)] underline underline-offset-4"
+                    >
+                      Try again
+                    </button>
+                  </div>
+                ) : (
+                  <div className="mt-4 grid gap-5 md:grid-cols-2">
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--color-gray-dark)]">
+                        Send exactly
+                      </p>
+                      <p className="mt-1 flex flex-wrap items-center gap-3">
+                        <span className="text-[22px] font-extrabold tabular-nums text-[var(--color-text-primary)]">
+                          {btcAmount} BTC
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => btcAmount && copy(btcAmount, "amount")}
+                          className="text-[13px] font-semibold text-[var(--color-text-muted)] underline underline-offset-4 hover:text-[var(--color-text-primary)]"
+                        >
+                          {copied === "amount" ? "Copied" : "Copy amount"}
+                        </button>
+                      </p>
+                      <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+                        &asymp; {total !== null ? fmt(total) : ""} at 1 BTC = {rate ? fmt(rate) : "â€¦"}.{" "}
+                        <button
+                          type="button"
+                          onClick={() => void loadRate()}
+                          className="font-semibold underline underline-offset-4 hover:text-[var(--color-text-primary)]"
+                        >
+                          {rateState === "loading" ? "Refreshingâ€¦" : "Refresh rate"}
+                        </button>
+                      </p>
+                    </div>
+
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--color-gray-dark)]">
+                        To this address
+                      </p>
+                      <p className="mt-1 break-all rounded-[var(--radius-8)] bg-[var(--color-bg-surface)] px-3 py-2 font-mono text-[13px] text-[var(--color-text-primary)]">
+                        {BTC_ADDRESS}
+                      </p>
+                      <div className="mt-2 flex flex-wrap gap-4 text-[13px] font-semibold">
+                        <button
+                          type="button"
+                          onClick={() => copy(BTC_ADDRESS, "address")}
+                          className="text-[var(--color-text-muted)] underline underline-offset-4 hover:text-[var(--color-text-primary)]"
+                        >
+                          {copied === "address" ? "Copied" : "Copy address"}
+                        </button>
+                        <a
+                          href={`bitcoin:${BTC_ADDRESS}?amount=${btcAmount}`}
+                          className="text-[var(--color-text-muted)] underline underline-offset-4 hover:text-[var(--color-text-primary)]"
+                        >
+                          Open in wallet
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                )}
+
+                <div className="mt-6 border-t border-[var(--color-border)] pt-5">
+                  <p className="text-sm text-[var(--color-text-muted)]">
+                    Once you&rsquo;ve sent the payment, send us your order and the transaction ID so we can confirm it.
+                  </p>
+                  <a
+                    href={whatsappUrl(
+                      btcAmount
+                        ? `I paid ${btcAmount} BTC to ${BTC_ADDRESS}.\nTransaction ID: `
+                        : "I paid with Bitcoin.\nTransaction ID: ",
+                    )}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`mt-3 inline-flex items-center gap-2 rounded-[var(--radius-8)] bg-black px-5 py-2.5 text-[15px] font-semibold text-white transition-colors duration-[var(--duration-moderate)] hover:bg-[#111f2a] ${
+                      !WHATSAPP_NUMBER ? "pointer-events-none opacity-50" : ""
+                    }`}
+                  >
+                    <ChatIcon />
+                    I&rsquo;ve paid &mdash; send details on WhatsApp
+                  </a>
+                </div>
+              </div>
+            ) : null}
+
+            {/* Cash App / Apple Pay / Zelle payment details */}
+            {(method === "cashapp" || method === "applepay" || method === "zelle") && showAltPay && !receiptOpen ? (
+              <div
+                ref={altPayRef}
+                className="mt-6 scroll-mt-40 rounded-[var(--radius-16)] border border-[var(--color-border)] p-5 sm:p-8"
+              >
+                <h2 className="font-display text-[20px] font-extrabold text-[var(--color-text-primary)]">
+                  {method === "cashapp" ? "Cash App payment" : method === "applepay" ? "Apple Pay" : "Zelle payment"}
+                </h2>
+                {orderRef ? (
+                  <p className="mt-1 text-xs text-[var(--color-text-muted)]">
+                    Order ref {orderRef}
+                  </p>
+                ) : null}
+                <div className="mt-4 grid gap-4">
+                  {method === "cashapp" ? (
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--color-gray-dark)]">
+                        Send to
+                      </p>
+                      <p className="mt-1 flex flex-wrap items-center gap-3">
+                        <span className="text-[18px] font-extrabold tabular-nums text-[var(--color-text-primary)]">
+                          ${CASHAPP_TAG.replace(/^\$/, "")}
+                        </span>
+                        <button
+                          type="button"
+                          onClick={() => copy(`$${CASHAPP_TAG.replace(/^\$/, "")}`, "address")}
+                          className="text-[13px] font-semibold text-[var(--color-text-muted)] underline underline-offset-4 hover:text-[var(--color-text-primary)]"
+                        >
+                          {copied === "address" ? "Copied" : "Copy tag"}
+                        </button>
+                      </p>
+                      {total !== null ? (
+                        <p className="mt-2 text-sm text-[var(--color-text-muted)]">
+                          Amount: <span className="font-semibold tabular-nums">{fmt(total)}</span>
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : null}
+                  {method === "applepay" ? (
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--color-gray-dark)]">
+                        Apple Pay details
+                      </p>
+                      <p className="mt-1 break-all rounded-[var(--radius-8)] bg-[var(--color-bg-surface)] px-3 py-2 text-[13px] text-[var(--color-text-primary)]">
+                        {APPLE_PAY_INFO}
+                      </p>
+                      <button
+                        type="button"
+                        onClick={() => copy(APPLE_PAY_INFO, "address")}
+                        className="mt-2 text-[13px] font-semibold text-[var(--color-text-muted)] underline underline-offset-4 hover:text-[var(--color-text-primary)]"
+                      >
+                        {copied === "address" ? "Copied" : "Copy details"}
+                      </button>
+                      {total !== null ? (
+                        <p className="mt-2 text-sm text-[var(--color-text-muted)]">
+                          Amount: <span className="font-semibold tabular-nums">{fmt(total)}</span>
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : null}
+                  {method === "zelle" ? (
+                    <div>
+                      <p className="text-[11px] font-semibold uppercase tracking-[0.06em] text-[var(--color-gray-dark)]">
+                        Zelle details
+                      </p>
