@@ -15,7 +15,7 @@ import { imageSrc } from "@/lib/image";
 // Set these in .env.local (see instructions):
 //   NEXT_PUBLIC_WHATSAPP_NUMBER=447123456789   (country code, digits only)
 //   NEXT_PUBLIC_BTC_ADDRESS=bc1...             (your RECEIVING address only)
-const WHATSAPP_NUMBER = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "";
+const WHATSAPP_NUMBER = (process.env.NEXT_PUBLIC_WHATSAPP_NUMBER ?? "").replace(/\D/g, "");
 const BTC_ADDRESS = process.env.NEXT_PUBLIC_BTC_ADDRESS ?? "";
 const CASHAPP_TAG = process.env.NEXT_PUBLIC_CASHAPP_TAG ?? "";
 const APPLE_PAY_INFO = process.env.NEXT_PUBLIC_APPLE_PAY_INFO ?? "";
@@ -47,14 +47,6 @@ type Method = "whatsapp" | "bitcoin" | "cashapp" | "applepay" | "zelle";
 /* ------------------------------------------------------------------ */
 /* Icons                                                               */
 /* ------------------------------------------------------------------ */
-
-function ChatIcon() {
-  return (
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M21 11.5a8.4 8.4 0 0 1-12.4 7.4L3 20.5l1.7-5.4A8.4 8.4 0 1 1 21 11.5Z" />
-    </svg>
-  );
-}
 
 function CopyIcon() {
   return (
@@ -94,9 +86,6 @@ export default function CartPage() {
   const fmt = (n: number) => formatPrice(n, n, currency);
 
   const [method, setMethod] = useState<Method>("whatsapp");
-  const [showBtc, setShowBtc] = useState(false);
-  const [showAltPay, setShowAltPay] = useState(false);
-  const altPayRef = useRef<HTMLDivElement | null>(null);
   const [rate, setRate] = useState<number | null>(null);
   const [rateState, setRateState] = useState<"idle" | "loading" | "error">("idle");
   const [copied, setCopied] = useState<"address" | "amount" | "receipt" | null>(null);
@@ -106,7 +95,6 @@ export default function CartPage() {
   const [orderRef, setOrderRef] = useState("");
   const [receiptDate, setReceiptDate] = useState("");
   const dialogRef = useRef<HTMLDialogElement>(null);
-  const btcRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const d = dialogRef.current;
@@ -133,8 +121,13 @@ export default function CartPage() {
   const shipping = SHIPPING_FEE - shippingDiscount;
   const total = subtotal !== null ? subtotal + shipping : null;
 
+  // The receipt stub only needs the extra row when WhatsApp is the chosen method.
+  const stubHeight = method === "whatsapp" ? STUB_H : STUB_H - 56;
+
   const btcAmount =
-    total !== null && rate ? (total / rate).toFixed(8) : null;
+    total !== null && rate && rateState === "idle"
+      ? (total / rate).toFixed(8)
+      : null;
 
   const loadRate = useCallback(async () => {
     setRateState("loading");
@@ -153,13 +146,12 @@ export default function CartPage() {
     }
   }, [currency]);
 
-  // (Re)load the Bitcoin rate when the panel opens or the currency changes
+  // Load the live Bitcoin rate whenever Bitcoin is selected or the currency changes
   useEffect(() => {
-    if (method === "bitcoin" && showBtc) {
-      setRate(null);
-      void loadRate();
-    }
-  }, [method, showBtc, loadRate]);
+    if (method !== "bitcoin") return;
+    const id = window.setTimeout(() => void loadRate(), 0);
+    return () => window.clearTimeout(id);
+  }, [method, loadRate]);
 
   const buildMessage = (extra?: string) => {
     const origin = typeof window !== "undefined" ? window.location.origin : "";
@@ -188,7 +180,15 @@ export default function CartPage() {
   const whatsappUrl = (extra?: string) =>
     `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(buildMessage(extra))}`;
 
-  // Step 1: "Proceed to checkout" shows the receipt
+  const openWhatsApp = () => {
+    window.open(
+      whatsappUrl("Please send me the payment details."),
+      "_blank",
+      "noopener,noreferrer",
+    );
+  };
+
+  // "View receipt" opens the receipt without leaving the cart
   const openReceipt = () => {
     setOrderRef(`ORD-${Date.now().toString(36).toUpperCase().slice(-6)}`);
     setReceiptDate(
@@ -197,34 +197,10 @@ export default function CartPage() {
     setReceiptOpen(true);
   };
 
-  // Step 2: from the receipt, continue with the chosen method
+  // From the receipt, WhatsApp proceeds straight to the chat
   const proceedFromReceipt = () => {
     setReceiptOpen(false);
-    if (method === "whatsapp") {
-      setShowBtc(false);
-      setShowAltPay(false);
-      window.open(
-        whatsappUrl("Please send me the payment details."),
-        "_blank",
-        "noopener,noreferrer",
-      );
-      return;
-    }
-    if (method === "bitcoin") {
-      setShowAltPay(false);
-      setShowBtc(true);
-      setTimeout(
-        () => btcRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
-        80,
-      );
-      return;
-    }
-    setShowBtc(false);
-    setShowAltPay(true);
-    setTimeout(
-      () => altPayRef.current?.scrollIntoView({ behavior: "smooth", block: "start" }),
-      80,
-    );
+    if (method === "whatsapp") openWhatsApp();
   };
 
   const copy = async (text: string, what: "address" | "amount" | "receipt") => {
@@ -291,6 +267,20 @@ export default function CartPage() {
       : method === "zelle"
       ? "Zelle"
       : "Payment";
+
+  // Inline receiving details for the manual payment methods
+  const altDetail =
+    method === "cashapp"
+      ? {
+          label: "Cash App tag",
+          value: CASHAPP_TAG ? `$${CASHAPP_TAG.replace(/^\$/, "")}` : "",
+          env: "NEXT_PUBLIC_CASHAPP_TAG",
+        }
+      : method === "applepay"
+      ? { label: "Apple Pay details", value: APPLE_PAY_INFO, env: "NEXT_PUBLIC_APPLE_PAY_INFO" }
+      : method === "zelle"
+      ? { label: "Zelle details", value: ZELLE_INFO, env: "NEXT_PUBLIC_ZELLE_INFO" }
+      : null;
 
   // Plain-text version of the receipt for the copy button
   const receiptText = () =>
@@ -516,11 +506,11 @@ export default function CartPage() {
                         name="checkout-method"
                         value={opt.id}
                         checked={method === opt.id}
-                    onChange={() => {
-                      setMethod(opt.id);
-                      setShowBtc(false);
-                      setShowAltPay(false);
-                    }}
+                        onChange={() => {
+                          setMethod(opt.id);
+                          setCopied(null);
+                          setRate(null);
+                        }}
                         className="peer sr-only"
                       />
                       <span className="mt-px grid h-[22px] w-[22px] shrink-0 place-items-center rounded-full border border-[#c3c9d0] bg-white text-white transition-colors duration-150 peer-checked:border-[var(--checkout-accent)] peer-checked:bg-[var(--checkout-accent)] peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-[var(--color-accent)] [&>svg]:opacity-0 peer-checked:[&>svg]:opacity-100">
@@ -538,6 +528,70 @@ export default function CartPage() {
                     </label>
                   ))}
                 </div>
+
+                {method === "bitcoin" ? (
+                  <div className="mt-6 rounded-[12px] border border-[#d6dbe1] bg-white p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.03em] text-[var(--color-text-muted)]">
+                      Bitcoin address
+                    </p>
+                    <div className="mt-2 flex items-start gap-2">
+                      <code className="min-w-0 grow break-all text-[12px] font-semibold leading-relaxed text-[var(--color-text-primary)]">
+                        {BTC_ADDRESS || "Add NEXT_PUBLIC_BTC_ADDRESS to .env.local"}
+                      </code>
+                      <button
+                        type="button"
+                        onClick={() => copy(BTC_ADDRESS, "address")}
+                        disabled={!BTC_ADDRESS}
+                        aria-label="Copy Bitcoin address"
+                        className="grid h-8 w-8 shrink-0 place-items-center rounded-[8px] border border-[var(--color-border)] text-[var(--color-text-muted)] transition-colors duration-150 hover:bg-[var(--color-bg-surface)] hover:text-[var(--color-text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        {copied === "address" ? <Check /> : <CopyIcon />}
+                      </button>
+                    </div>
+                    <div className="mt-3 flex items-center justify-between gap-3 border-t border-[#e6eaee] pt-3">
+                      <span className="text-[11px] font-semibold uppercase tracking-[0.03em] text-[var(--color-text-muted)]">
+                        Amount
+                      </span>
+                      <span className="flex items-center gap-2 text-[13px] font-semibold tabular-nums">
+                        {btcAmount
+                          ? `${btcAmount} BTC`
+                          : rateState === "error"
+                          ? "Rate unavailable"
+                          : "Fetching live rate…"}
+                        {btcAmount ? (
+                          <button
+                            type="button"
+                            onClick={() => copy(btcAmount, "amount")}
+                            aria-label="Copy Bitcoin amount"
+                            className="grid h-7 w-7 place-items-center rounded-[7px] border border-[var(--color-border)] text-[var(--color-text-muted)] transition-colors duration-150 hover:bg-[var(--color-bg-surface)] hover:text-[var(--color-text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+                          >
+                            {copied === "amount" ? <Check /> : <CopyIcon />}
+                          </button>
+                        ) : null}
+                      </span>
+                    </div>
+                  </div>
+                ) : altDetail ? (
+                  <div className="mt-6 rounded-[12px] border border-[#d6dbe1] bg-white p-4">
+                    <p className="text-[11px] font-semibold uppercase tracking-[0.03em] text-[var(--color-text-muted)]">
+                      {altDetail.label}
+                    </p>
+                    <div className="mt-2 flex items-start gap-2">
+                      <code className="min-w-0 grow break-all text-[12px] font-semibold leading-relaxed text-[var(--color-text-primary)]">
+                        {altDetail.value || `Add ${altDetail.env} to .env.local`}
+                      </code>
+                      <button
+                        type="button"
+                        onClick={() => copy(altDetail.value, "address")}
+                        disabled={!altDetail.value}
+                        aria-label={`Copy ${altDetail.label}`}
+                        className="grid h-8 w-8 shrink-0 place-items-center rounded-[8px] border border-[var(--color-border)] text-[var(--color-text-muted)] transition-colors duration-150 hover:bg-[var(--color-bg-surface)] hover:text-[var(--color-text-primary)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-50"
+                      >
+                        {copied === "address" ? <Check /> : <CopyIcon />}
+                      </button>
+                    </div>
+                  </div>
+                ) : null}
               </fieldset>
 
               <div className="flex flex-col md:pt-1">
@@ -582,15 +636,35 @@ export default function CartPage() {
                   </div>
                 </dl>
 
-                <button
-                  type="button"
-                  onClick={openReceipt}
-                  disabled={configMissing}
-                  className="mt-3 flex h-12 w-full items-center justify-between gap-3 rounded-[8px] bg-black px-4 text-[14px] font-bold text-white transition-colors duration-[var(--duration-moderate)] hover:bg-[#111f2a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-50"
-                >
-                  <span>Proceed to checkout</span>
-                  <span className="tabular-nums">{total !== null ? fmt(total) : ""}</span>
-                </button>
+                {method === "whatsapp" ? (
+                  <div className="mt-3 space-y-2">
+                    <button
+                      type="button"
+                      onClick={openReceipt}
+                      className="flex h-12 w-full items-center justify-center gap-3 rounded-[8px] border border-[var(--color-border)] bg-white px-4 text-[14px] font-bold text-[var(--color-text-primary)] transition-colors duration-[var(--duration-moderate)] hover:bg-[var(--color-bg-surface)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+                    >
+                      <span>View receipt</span>
+                    </button>
+                    <button
+                      type="button"
+                      onClick={openWhatsApp}
+                      disabled={configMissing}
+                      className="flex h-12 w-full items-center justify-between gap-3 rounded-[8px] bg-black px-4 text-[14px] font-bold text-white transition-colors duration-[var(--duration-moderate)] hover:bg-[#111f2a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)] disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                      <span>Proceed to checkout</span>
+                      <span className="tabular-nums">{total !== null ? fmt(total) : ""}</span>
+                    </button>
+                  </div>
+                ) : (
+                  <button
+                    type="button"
+                    onClick={openReceipt}
+                    className="mt-3 flex h-12 w-full items-center justify-between gap-3 rounded-[8px] bg-black px-4 text-[14px] font-bold text-white transition-colors duration-[var(--duration-moderate)] hover:bg-[#111f2a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+                  >
+                    <span>View receipt</span>
+                    <span className="tabular-nums">{total !== null ? fmt(total) : ""}</span>
+                  </button>
+                )}
 
                 {configMissing ? (
                   <p className="mt-2 text-xs text-[var(--color-text-muted)]">
@@ -609,8 +683,6 @@ export default function CartPage() {
                 ) : null}
               </div>
             </div>
-
-            {/* Alternative payment details (disabled for this copy) */}
 
             {/* Receipt */}
             <style>{`
@@ -636,8 +708,8 @@ export default function CartPage() {
                 <div
                   className="bg-white text-[var(--color-text-primary)]"
                   style={{
-                    WebkitMask: `radial-gradient(11px at 0 calc(100% - ${STUB_H}px), #0000 97%, #000) left / 51% 100% no-repeat, radial-gradient(11px at 100% calc(100% - ${STUB_H}px), #0000 97%, #000) right / 51% 100% no-repeat`,
-                    mask: `radial-gradient(11px at 0 calc(100% - ${STUB_H}px), #0000 97%, #000) left / 51% 100% no-repeat, radial-gradient(11px at 100% calc(100% - ${STUB_H}px), #0000 97%, #000) right / 51% 100% no-repeat`,
+                    WebkitMask: `radial-gradient(11px at 0 calc(100% - ${stubHeight}px), #0000 97%, #000) left / 51% 100% no-repeat, radial-gradient(11px at 100% calc(100% - ${stubHeight}px), #0000 97%, #000) right / 51% 100% no-repeat`,
+                    mask: `radial-gradient(11px at 0 calc(100% - ${stubHeight}px), #0000 97%, #000) left / 51% 100% no-repeat, radial-gradient(11px at 100% calc(100% - ${stubHeight}px), #0000 97%, #000) right / 51% 100% no-repeat`,
                   }}
                 >
                   <div className="p-6 pb-8 sm:p-8 sm:pb-9">
@@ -734,19 +806,21 @@ export default function CartPage() {
                   {/* Tear-off stub */}
                   <div
                     className="relative flex flex-col justify-center gap-2 px-6 sm:px-8"
-                    style={{ height: STUB_H }}
+                    style={{ height: stubHeight }}
                   >
                     <div
                       aria-hidden="true"
                       className="pointer-events-none absolute inset-x-6 top-0 border-t-2 border-dashed border-[#d3d8de] sm:inset-x-8"
                     />
-                    <button
-                      type="button"
-                      onClick={proceedFromReceipt}
-                      className="h-12 w-full rounded-[10px] bg-black text-[15px] font-bold text-white transition-colors duration-[var(--duration-moderate)] hover:bg-[#111f2a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
-                    >
-                      Proceed to {methodName}
-                    </button>
+                    {method === "whatsapp" ? (
+                      <button
+                        type="button"
+                        onClick={proceedFromReceipt}
+                        className="h-12 w-full rounded-[10px] bg-black text-[15px] font-bold text-white transition-colors duration-[var(--duration-moderate)] hover:bg-[#111f2a] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--color-accent)]"
+                      >
+                        Proceed to {methodName}
+                      </button>
+                    ) : null}
                     <div className="grid grid-cols-2 gap-2">
                       <button
                         type="button"

@@ -119,7 +119,7 @@ export function SiteFooter() {
           <div className="flex flex-col items-center md:max-w-[305px] md:items-start">
             <Link href="/" className="mb-4 flex max-w-[197px] items-center gap-2.5 md:mb-9">
               <Image
-                src="/noface.png"
+                src="/logo.png"
                 alt={COMPANY_NAME}
                 width={60}
                 height={60}

@@ -11,7 +11,7 @@ export function FavouritesNavIcon() {
     <Link
       href="/favourites"
       aria-label={`Favourites (${count})`}
-      className="relative text-[#111f2a] transition-colors duration-[var(--duration-base)] hover:text-[#357a25] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#5eb047]"
+      className="relative text-white transition-colors duration-[var(--duration-base)] hover:text-[#91f974] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[#91f974]"
     >
       <HeartIcon className="h-[22px] w-[22px]" />
       {count > 0 ? (

@@ -31,7 +31,7 @@ export function CurrencyDropdown() {
         aria-expanded={open}
         aria-label="Change currency"
         onClick={() => setOpen((v) => !v)}
-        className="flex items-center gap-1.5 rounded-[var(--radius-8)] px-2 py-1.5 text-[14px] font-semibold text-[#111f2a] transition-colors duration-[var(--duration-base)] hover:bg-[#f3f6f0] focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#5eb047]"
+        className="flex items-center gap-1.5 rounded-[var(--radius-8)] px-2 py-1.5 text-[14px] font-semibold text-white transition-colors duration-[var(--duration-base)] hover:bg-white/10 focus-visible:outline focus-visible:outline-2 focus-visible:outline-[#91f974]"
       >
         <span>
           {selectedCurrency.symbol} {selectedCurrency.code}

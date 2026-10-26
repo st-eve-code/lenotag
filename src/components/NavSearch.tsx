@@ -78,7 +78,7 @@ export function NavSearch({ categories }: { categories: SearchCategory[] }) {
   const noResults = showProductResults && searchSettled && !loading && results.length === 0;
 
   return (
-    <div ref={containerRef} className="relative hidden w-[220px] shrink-0 xl:block 2xl:w-[270px]">
+    <div ref={containerRef} className="relative col-start-2 hidden w-full max-w-[540px] min-w-0 justify-self-center lg:block">
       <form
         action="/shop"
         method="get"
@@ -117,7 +117,7 @@ export function NavSearch({ categories }: { categories: SearchCategory[] }) {
           aria-label="Search products"
           aria-expanded={open}
           aria-autocomplete="list"
-          className="h-10 w-full rounded-[var(--radius-pill)] border border-transparent bg-[#f3f6f0] py-2 pl-10 pr-4 text-[14px] text-[#111f2a] outline-none transition-colors duration-[var(--duration-base)] placeholder:text-[#6b7280] focus:border-[#5eb047] focus:bg-white"
+          className="h-10 w-full rounded-[var(--radius-pill)] border border-transparent bg-white py-2 pl-10 pr-4 text-[14px] text-[#111f2a] outline-none transition-colors duration-[var(--duration-base)] placeholder:text-[#6b7280] focus:border-[#5eb047] focus:bg-white"
         />
         {loading ? (
           <svg
@@ -133,7 +133,7 @@ export function NavSearch({ categories }: { categories: SearchCategory[] }) {
       </form>
 
       {open ? (
-        <div className="absolute right-0 top-full z-50 mt-2 w-[380px] overflow-hidden rounded-[var(--radius-16)] border border-[#e8ece4] bg-white shadow-[0_24px_48px_-20px_rgba(8,15,21,0.35)]">
+        <div className="absolute inset-x-0 top-full z-50 mt-2 overflow-hidden rounded-[var(--radius-16)] border border-[#e8ece4] bg-white shadow-[0_24px_48px_-20px_rgba(8,15,21,0.35)]">
           {showProductResults ? (
             <>
               {results.length > 0 ? (

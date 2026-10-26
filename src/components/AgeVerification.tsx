@@ -13,13 +13,16 @@ export function AgeVerification() {
   const [denied, setDenied] = useState(false);
 
   useEffect(() => {
-    let seen = false;
-    try {
-      seen = sessionStorage.getItem(STORAGE_KEY) === "1";
-    } catch {
-      // Storage unavailable (private mode) — default to showing the gate.
-    }
-    if (!seen) setVerified(false);
+    const id = window.setTimeout(() => {
+      let seen = false;
+      try {
+        seen = sessionStorage.getItem(STORAGE_KEY) === "1";
+      } catch {
+        // Storage unavailable (private mode) — default to showing the gate.
+      }
+      if (!seen) setVerified(false);
+    }, 0);
+    return () => window.clearTimeout(id);
   }, []);
 
   useEffect(() => {
@@ -137,7 +140,7 @@ export function AgeVerification() {
                 You must be 18 or over
               </h2>
               <p className="mx-auto mt-3 max-w-[34ch] text-[14px] leading-relaxed text-white/60">
-                We can&rsquo;t let you into nofacetrap. UK law requires you to be 18 or
+                We can&rsquo;t let you into lenotag. UK law requires you to be 18 or
                 older to view and buy vaping products.
               </p>
               <div className="mt-7 flex flex-col items-center gap-3">
@@ -185,7 +188,7 @@ export function AgeVerification() {
                 Are you 18 or older?
               </h2>
               <p className="mx-auto mt-3 max-w-[36ch] text-[14px] leading-relaxed text-white/60">
-                You need to be 18 or over to enter nofacetrap and to buy vaping
+                You need to be 18 or over to enter lenotag and to buy vaping
                 products in the UK.
               </p>
 
